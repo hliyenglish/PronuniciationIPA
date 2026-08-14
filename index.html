@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPA Master - English Pronunciation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <button class="nav-btn active" data-target="ipa-section"><i class="fa-solid fa-volume-high"></i> Bảng IPA</button>
+            <button class="nav-btn" data-target="theory-section"><i class="fa-solid fa-book-open"></i> Stress & Rhythm</button>
+            <button class="nav-btn" data-target="weak-forms-section"><i class="fa-solid fa-link-slash"></i> Weak Forms</button>
+        </div>
+    </nav>
+
+    <!-- PHẦN 1: BẢNG IPA (Được bọc trong một section) -->
+    <div id="ipa-section" class="view-section active">
+        <div class="app-container">
+                <!-- Sidebar Navigation -->
+                <nav class="sidebar">
+                    <div class="logo">
+                        <i class="fa-solid fa-microphone-lines"></i>
+                        <span>IPA Master</span>
+                    </div>
+                    <ul class="nav-links">
+                        <li class="active" data-target="ipa-chart">
+                            <i class="fa-solid fa-border-all"></i>
+                            <span>Bảng 44 Âm IPA</span>
+                        </li>
+                        <li data-target="minimal-pairs">
+                            <i class="fa-solid fa-ear-listen"></i>
+                            <span>Cặp Âm Dễ Nhầm</span>
+                        </li>
+                        <li data-target="record-compare">
+                            <i class="fa-solid fa-microphone"></i>
+                            <span>Ghi Âm & So Sánh</span>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- Main Content Area -->
+                <main class="main-content">
+                    <!-- Header -->
+                    <header>
+                        <div class="header-title">
+                            <h1 id="page-title">Bảng 44 Âm IPA (International Phonetic Alphabet)</h1>
+                            <p id="page-subtitle">Nhấp vào từng âm để nghe và xem ví dụ.</p>
+                        </div>
+                    </header>
+
+                    <!-- Sections -->
+                    <div class="sections-container">
+                        <!-- IPA Chart Section -->
+                        <section id="ipa-chart" class="section active">
+                            <div class="chart-container">
+                                <!-- Vowels -->
+                                <div class="category-block vowels-block">
+                                    <h2 class="category-title">Nguyên âm (Vowels)</h2>
+                                    <div class="sub-categories">
+                                        <div class="sub-category">
+                                            <h3>Nguyên âm đơn (Monophthongs)</h3>
+                                            <div class="sound-grid monophthongs-grid" id="monophthongs-grid">
+                                                <!-- Rendered by JS -->
+                                            </div>
+                                        </div>
+                                        <div class="sub-category">
+                                            <h3>Nguyên âm đôi (Diphthongs)</h3>
+                                            <div class="sound-grid diphthongs-grid" id="diphthongs-grid">
+                                                <!-- Rendered by JS -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Consonants -->
+                                <div class="category-block consonants-block">
+                                    <h2 class="category-title">Phụ âm (Consonants)</h2>
+                                    <div class="sound-grid consonants-grid" id="consonants-grid">
+                                        <!-- Rendered by JS -->
+                                    </div>
+                                </div>
+
+                                <!-- Consonant Clusters -->
+                                <div class="category-block clusters-block">
+                                    <h2 class="category-title">Phụ âm đôi / Cụm phụ âm (Clusters)</h2>
+                                    <div class="sound-grid clusters-grid" id="clusters-grid">
+                                        <!-- Rendered by JS -->
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Minimal Pairs Section -->
+                        <section id="minimal-pairs" class="section">
+                            <div class="feature-coming-soon">
+                                <i class="fa-solid fa-person-digging"></i>
+                                <h2>Tính năng đang phát triển</h2>
+                                <p>Phần luyện tập phân biệt các cặp âm dễ nhầm lẫn sẽ sớm ra mắt.</p>
+                            </div>
+                        </section>
+
+                        <!-- Record & Compare Section -->
+                        <section id="record-compare" class="section">
+                            <div class="record-container">
+                                <h2>Luyện Phát Âm</h2>
+                                <p>Chọn một âm hoặc từ, nghe âm thanh chuẩn và ghi âm giọng của bạn để so sánh.</p>
+                                
+                                <div class="record-workspace">
+                                    <div class="target-word">
+                                        <span class="phonetic">/i:/</span>
+                                        <span class="word">sheep</span>
+                                    </div>
+                                    
+                                    <div class="audio-controls">
+                                        <button class="btn btn-listen" id="btn-listen-target">
+                                            <i class="fa-solid fa-volume-high"></i> Nghe mẫu
+                                        </button>
+                                        <button class="btn btn-record" id="btn-record">
+                                            <i class="fa-solid fa-microphone"></i> <span>Bắt đầu ghi âm</span>
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="playback-area" style="display: none;">
+                                        <h3>Giọng của bạn:</h3>
+                                        <audio id="user-audio" controls></audio>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </main>
+        </div>
+    </div> <!-- Hết ipa-section -->
+
+    <!-- SECTION 2: THEORY (Hidden by default) -->
+    <div id="theory-section" class="view-section theory-container" style="display: none;">
+        <header class="theory-header">
+            <h1>Stress and Rhythm</h1>
+            <p>The secret to speaking English naturally with "musicality" like a native speaker</p>
+        </header>
+
+        <div class="theory-content">
+            <div class="theory-card">
+                <h2><i class="fa-solid fa-music"></i> 1. The Importance of Rhythm</h2>
+                <p>Unlike some languages where syllables are often pronounced with equal length and tone, English has a distinct "musicality": it goes up and down, fast and slow.</p>
+                <p>To communicate naturally and understand native speakers better, mastering <strong>Stress</strong> and <strong>De-stress</strong> is absolutely crucial.</p>
+            </div>
+
+            <div class="theory-card">
+                <h2><i class="fa-solid fa-balance-scale"></i> 2. Stressing & De-stressing</h2>
+                <ul class="theory-list">
+                    <li><span class="highlight-stress">Stressing:</span> When a word is stressed, you must pronounce it <strong>LOUDER</strong>, <strong>LONGER</strong>, and <strong>HIGHER in pitch</strong>.</li>
+                    <li><span class="highlight-destress">De-stressing:</span> Less important words are reduced, pronounced softer, shorter, and often turn into the Schwa sound <strong>(/ə/)</strong>.</li>
+                </ul>
+            </div>
+
+            <div class="theory-grid">
+                <div class="theory-card card-content-words">
+                    <h3><i class="fa-solid fa-star"></i> Content Words</h3>
+                    <p class="subtitle">👉 ALWAYS STRESSED</p>
+                    <p>These are the words that carry the main meaning of the sentence. If removed, the sentence makes no sense.</p>
+                    <ul>
+                        <li><strong>Nouns:</strong> car, music, teacher...</li>
+                        <li><strong>Main Verbs:</strong> run, eat, study...</li>
+                        <li><strong>Adjectives:</strong> beautiful, happy, big...</li>
+                        <li><strong>Adverbs:</strong> quickly, never, often...</li>
+                        <li><strong>Wh- words:</strong> who, what, where...</li>
+                        <li><strong>Negatives:</strong> no, don't, can't...</li>
+                    </ul>
+                </div>
+
+                <div class="theory-card card-function-words">
+                    <h3><i class="fa-solid fa-link"></i> Function Words</h3>
+                    <p class="subtitle">👉 OFTEN DE-STRESSED / REDUCED</p>
+                    <p>These serve a grammatical role, acting as the "glue" to connect content words together.</p>
+                    <ul>
+                        <li><strong>Articles:</strong> a, an, the <em>(reduced to /ə/ or /ðə/)</em></li>
+                        <li><strong>Prepositions:</strong> to, at, for <em>('to' becomes /tə/, 'for' becomes /fə/)</em></li>
+                        <li><strong>Auxiliary Verbs:</strong> do, be, have, can...</li>
+                        <li><strong>Pronouns:</strong> I, he, she, it, them...</li>
+                        <li><strong>Conjunctions:</strong> and, but, or <em>('and' becomes /ən/)</em></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="theory-card example-card">
+                <h2><i class="fa-solid fa-microphone-lines"></i> 3. Practice Exercises</h2>
+                <div class="example-box">
+                    <p class="example-sentence">
+                        <span class="word-destress">I</span> 
+                        <span class="word-stress">WANT</span> 
+                        <span class="word-destress">to</span> 
+                        <span class="word-stress">GO</span> 
+                        <span class="word-destress">to</span> 
+                        <span class="word-destress">the</span> 
+                        <span class="word-stress">STORE</span>.
+                        <button class="btn-play-small" onclick="window.speak('I want to go to the store.')" style="margin-left: 10px; transform: translateY(-5px);"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <p class="example-phonetic">Rhythm: /ai <strong>WɒNT</strong> tə <strong>GOU</strong> tə ðə <strong>STƆ:</strong>/</p>
+                </div>
+                
+                <div class="example-box">
+                    <p class="example-sentence">
+                        <span class="word-stress">KIDS</span> 
+                        <span class="word-stress">PLAY</span> 
+                        <span class="word-destress">in</span> 
+                        <span class="word-destress">the</span> 
+                        <span class="word-stress">PARK</span>.
+                        <button class="btn-play-small" onclick="window.speak('Kids play in the park.')" style="margin-left: 10px; transform: translateY(-5px);"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <p class="example-phonetic">Rhythm: /<strong>KIDZ</strong> <strong>PLEI</strong> ɪn ðə <strong>Pɑ:K</strong>/</p>
+                </div>
+
+                <div class="example-box">
+                    <p class="example-sentence">
+                        <span class="word-destress">She</span> 
+                        <span class="word-stress">WANTS</span> 
+                        <span class="word-destress">to</span> 
+                        <span class="word-stress">PLAY</span> 
+                        <span class="word-destress">a</span> 
+                        <span class="word-stress">GAME</span>.
+                        <button class="btn-play-small" onclick="window.speak('She wants to play a game.')" style="margin-left: 10px; transform: translateY(-5px);"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <p class="example-phonetic">Rhythm: /ʃi <strong>WɒNTS</strong> tə <strong>PLEI</strong> ə <strong>GEIM</strong>/</p>
+                </div>
+
+                <div class="example-box">
+                    <p class="example-sentence">
+                        <span class="word-destress">I'd</span> 
+                        <span class="word-stress">LIKE</span> 
+                        <span class="word-destress">you</span> 
+                        <span class="word-destress">to</span> 
+                        <span class="word-stress">JOIN</span> 
+                        <span class="word-destress">us</span> 
+                        <span class="word-destress">for</span> 
+                        <span class="word-stress">DINNER</span>.
+                        <button class="btn-play-small" onclick="window.speak('I\'d like you to join us for dinner.')" style="margin-left: 10px; transform: translateY(-5px);"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <p class="example-phonetic">Rhythm: /aid <strong>LAIK</strong> ju tə <strong>DʒƆIN</strong> əs fə <strong>DINə</strong>/</p>
+                </div>
+            </div>
+
+            <div class="theory-card quiz-card">
+                <h2><i class="fa-solid fa-list-check"></i> 4. Mini Quiz</h2>
+                <p>Identify the <strong>Content Words (Stress)</strong> and <strong>Function Words (De-stress)</strong> in the following sentences:</p>
+                
+                <!-- Q1 -->
+                <div class="quiz-question" style="margin-top: 1.5rem;">
+                    <p style="font-size: 1.2rem; display: flex; align-items: center; gap: 10px;">
+                        <strong>Q1:</strong> She is waiting for the bus.
+                        <button class="btn-play-small" onclick="window.speak('She is waiting for the bus.')"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <button class="btn-reveal" onclick="this.nextElementSibling.style.display='block'; this.style.display='none'" style="background: var(--accent-primary); color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600;">Show Answer</button>
+                    <div class="quiz-answer" style="display: none; margin-top: 10px; padding: 15px; background: rgba(16, 185, 129, 0.1); border-left: 4px solid var(--accent-success); border-radius: 0 8px 8px 0;">
+                        <p style="margin-bottom: 0.5rem;"><span class="highlight-stress">Stress (Content Words):</span> WAITING, BUS</p>
+                        <p style="margin-bottom: 0;"><span class="highlight-destress">De-stress (Function Words):</span> She, is, for, the</p>
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="quiz-question" style="margin-top: 2rem; border-top: 1px solid var(--glass-border); padding-top: 1.5rem;">
+                    <p style="font-size: 1.2rem; display: flex; align-items: center; gap: 10px;">
+                        <strong>Q2:</strong> We can study at the library tomorrow.
+                        <button class="btn-play-small" onclick="window.speak('We can study at the library tomorrow.')"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <button class="btn-reveal" onclick="this.nextElementSibling.style.display='block'; this.style.display='none'" style="background: var(--accent-primary); color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600;">Show Answer</button>
+                    <div class="quiz-answer" style="display: none; margin-top: 10px; padding: 15px; background: rgba(16, 185, 129, 0.1); border-left: 4px solid var(--accent-success); border-radius: 0 8px 8px 0;">
+                        <p style="margin-bottom: 0.5rem;"><span class="highlight-stress">Stress (Content Words):</span> STUDY, LIBRARY, TOMORROW</p>
+                        <p style="margin-bottom: 0;"><span class="highlight-destress">De-stress (Function Words):</span> We, can, at, the</p>
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="quiz-question" style="margin-top: 2rem; border-top: 1px solid var(--glass-border); padding-top: 1.5rem;">
+                    <p style="font-size: 1.2rem; display: flex; align-items: center; gap: 10px;">
+                        <strong>Q3:</strong> The dog is barking at the mailman.
+                        <button class="btn-play-small" onclick="window.speak('The dog is barking at the mailman.')"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <button class="btn-reveal" onclick="this.nextElementSibling.style.display='block'; this.style.display='none'" style="background: var(--accent-primary); color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600;">Show Answer</button>
+                    <div class="quiz-answer" style="display: none; margin-top: 10px; padding: 15px; background: rgba(16, 185, 129, 0.1); border-left: 4px solid var(--accent-success); border-radius: 0 8px 8px 0;">
+                        <p style="margin-bottom: 0.5rem;"><span class="highlight-stress">Stress (Content Words):</span> DOG, BARKING, MAILMAN</p>
+                        <p style="margin-bottom: 0;"><span class="highlight-destress">De-stress (Function Words):</span> The, is, at, the</p>
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="quiz-question" style="margin-top: 2rem; border-top: 1px solid var(--glass-border); padding-top: 1.5rem;">
+                    <p style="font-size: 1.2rem; display: flex; align-items: center; gap: 10px;">
+                        <strong>Q4:</strong> I need to buy some milk and eggs.
+                        <button class="btn-play-small" onclick="window.speak('I need to buy some milk and eggs.')"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <button class="btn-reveal" onclick="this.nextElementSibling.style.display='block'; this.style.display='none'" style="background: var(--accent-primary); color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600;">Show Answer</button>
+                    <div class="quiz-answer" style="display: none; margin-top: 10px; padding: 15px; background: rgba(16, 185, 129, 0.1); border-left: 4px solid var(--accent-success); border-radius: 0 8px 8px 0;">
+                        <p style="margin-bottom: 0.5rem;"><span class="highlight-stress">Stress (Content Words):</span> NEED, BUY, MILK, EGGS</p>
+                        <p style="margin-bottom: 0;"><span class="highlight-destress">De-stress (Function Words):</span> I, to, some, and</p>
+                    </div>
+                </div>
+
+                <!-- Q5 -->
+                <div class="quiz-question" style="margin-top: 2rem; border-top: 1px solid var(--glass-border); padding-top: 1.5rem;">
+                    <p style="font-size: 1.2rem; display: flex; align-items: center; gap: 10px;">
+                        <strong>Q5:</strong> My brother works in a hospital.
+                        <button class="btn-play-small" onclick="window.speak('My brother works in a hospital.')"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <button class="btn-reveal" onclick="this.nextElementSibling.style.display='block'; this.style.display='none'" style="background: var(--accent-primary); color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600;">Show Answer</button>
+                    <div class="quiz-answer" style="display: none; margin-top: 10px; padding: 15px; background: rgba(16, 185, 129, 0.1); border-left: 4px solid var(--accent-success); border-radius: 0 8px 8px 0;">
+                        <p style="margin-bottom: 0.5rem;"><span class="highlight-stress">Stress (Content Words):</span> BROTHER, WORKS, HOSPITAL</p>
+                        <p style="margin-bottom: 0;"><span class="highlight-destress">De-stress (Function Words):</span> My, in, a</p>
+                    </div>
+                </div>
+
+                <!-- Q6 -->
+                <div class="quiz-question" style="margin-top: 2rem; border-top: 1px solid var(--glass-border); padding-top: 1.5rem;">
+                    <p style="font-size: 1.2rem; display: flex; align-items: center; gap: 10px;">
+                        <strong>Q6:</strong> Do you like to play tennis?
+                        <button class="btn-play-small" onclick="window.speak('Do you like to play tennis?')"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <button class="btn-reveal" onclick="this.nextElementSibling.style.display='block'; this.style.display='none'" style="background: var(--accent-primary); color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600;">Show Answer</button>
+                    <div class="quiz-answer" style="display: none; margin-top: 10px; padding: 15px; background: rgba(16, 185, 129, 0.1); border-left: 4px solid var(--accent-success); border-radius: 0 8px 8px 0;">
+                        <p style="margin-bottom: 0.5rem;"><span class="highlight-stress">Stress (Content Words):</span> LIKE, PLAY, TENNIS</p>
+                        <p style="margin-bottom: 0;"><span class="highlight-destress">De-stress (Function Words):</span> Do, you, to</p>
+                    </div>
+                </div>
+
+                <!-- Q7 -->
+                <div class="quiz-question" style="margin-top: 2rem; border-top: 1px solid var(--glass-border); padding-top: 1.5rem;">
+                    <p style="font-size: 1.2rem; display: flex; align-items: center; gap: 10px;">
+                        <strong>Q7:</strong> They are going to travel to Japan.
+                        <button class="btn-play-small" onclick="window.speak('They are going to travel to Japan.')"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <button class="btn-reveal" onclick="this.nextElementSibling.style.display='block'; this.style.display='none'" style="background: var(--accent-primary); color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600;">Show Answer</button>
+                    <div class="quiz-answer" style="display: none; margin-top: 10px; padding: 15px; background: rgba(16, 185, 129, 0.1); border-left: 4px solid var(--accent-success); border-radius: 0 8px 8px 0;">
+                        <p style="margin-bottom: 0.5rem;"><span class="highlight-stress">Stress (Content Words):</span> GOING, TRAVEL, JAPAN</p>
+                        <p style="margin-bottom: 0;"><span class="highlight-destress">De-stress (Function Words):</span> They, are, to, to</p>
+                    </div>
+                </div>
+
+                <!-- Q8 -->
+                <div class="quiz-question" style="margin-top: 2rem; border-top: 1px solid var(--glass-border); padding-top: 1.5rem;">
+                    <p style="font-size: 1.2rem; display: flex; align-items: center; gap: 10px;">
+                        <strong>Q8:</strong> He left his keys on the table.
+                        <button class="btn-play-small" onclick="window.speak('He left his keys on the table.')"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <button class="btn-reveal" onclick="this.nextElementSibling.style.display='block'; this.style.display='none'" style="background: var(--accent-primary); color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600;">Show Answer</button>
+                    <div class="quiz-answer" style="display: none; margin-top: 10px; padding: 15px; background: rgba(16, 185, 129, 0.1); border-left: 4px solid var(--accent-success); border-radius: 0 8px 8px 0;">
+                        <p style="margin-bottom: 0.5rem;"><span class="highlight-stress">Stress (Content Words):</span> LEFT, KEYS, TABLE</p>
+                        <p style="margin-bottom: 0;"><span class="highlight-destress">De-stress (Function Words):</span> He, his, on, the</p>
+                    </div>
+                </div>
+
+                <!-- Q9 -->
+                <div class="quiz-question" style="margin-top: 2rem; border-top: 1px solid var(--glass-border); padding-top: 1.5rem;">
+                    <p style="font-size: 1.2rem; display: flex; align-items: center; gap: 10px;">
+                        <strong>Q9:</strong> We should call the doctor right away.
+                        <button class="btn-play-small" onclick="window.speak('We should call the doctor right away.')"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <button class="btn-reveal" onclick="this.nextElementSibling.style.display='block'; this.style.display='none'" style="background: var(--accent-primary); color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600;">Show Answer</button>
+                    <div class="quiz-answer" style="display: none; margin-top: 10px; padding: 15px; background: rgba(16, 185, 129, 0.1); border-left: 4px solid var(--accent-success); border-radius: 0 8px 8px 0;">
+                        <p style="margin-bottom: 0.5rem;"><span class="highlight-stress">Stress (Content Words):</span> CALL, DOCTOR, RIGHT, AWAY</p>
+                        <p style="margin-bottom: 0;"><span class="highlight-destress">De-stress (Function Words):</span> We, should, the</p>
+                    </div>
+                </div>
+
+                <!-- Q10 -->
+                <div class="quiz-question" style="margin-top: 2rem; border-top: 1px solid var(--glass-border); padding-top: 1.5rem;">
+                    <p style="font-size: 1.2rem; display: flex; align-items: center; gap: 10px;">
+                        <strong>Q10:</strong> Can you help me with my homework?
+                        <button class="btn-play-small" onclick="window.speak('Can you help me with my homework?')"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <button class="btn-reveal" onclick="this.nextElementSibling.style.display='block'; this.style.display='none'" style="background: var(--accent-primary); color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600;">Show Answer</button>
+                    <div class="quiz-answer" style="display: none; margin-top: 10px; padding: 15px; background: rgba(16, 185, 129, 0.1); border-left: 4px solid var(--accent-success); border-radius: 0 8px 8px 0;">
+                        <p style="margin-bottom: 0.5rem;"><span class="highlight-stress">Stress (Content Words):</span> HELP, HOMEWORK</p>
+                        <p style="margin-bottom: 0;"><span class="highlight-destress">De-stress (Function Words):</span> Can, you, me, with, my</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 3: WEAK FORMS (Hidden by default) -->
+    <div id="weak-forms-section" class="view-section theory-container" style="display: none;">
+        <header class="theory-header">
+            <h1>Weak Forms</h1>
+            <p>Why "natives" and "non-natives" sound completely different</p>
+        </header>
+
+        <div class="theory-content">
+            <div class="theory-card">
+                <h2><i class="fa-solid fa-ear-listen"></i> 1. The Secret of the Schwa (/ə/)</h2>
+                <p>According to Dr. Geoff Lindsey, the biggest difference between native and non-native speech isn't just about speaking fast. It's about <strong>Weak Forms</strong>.</p>
+                <p>When native English speakers talk naturally, they don't pronounce every word clearly. They compress unstressed <em>Function Words</em> (like "to", "for", "and", "have") into weak, lazy sounds—most commonly the <strong>Schwa (/ə/)</strong>.</p>
+            </div>
+
+            <div class="theory-grid" style="margin-bottom: 2rem;">
+                <div class="theory-card">
+                    <h3><i class="fa-solid fa-arrow-right-arrow-left"></i> Prepositions & Conjunctions</h3>
+                    <p>Small linking words lose their vowels and turn into the Schwa sound.</p>
+                    <ul class="theory-list" style="margin-top: 1rem;">
+                        <li><strong>to:</strong> /tu:/ ➡️ <strong>/tə/</strong> <br><em>(e.g., go to work -> go /tə/ work)</em></li>
+                        <li><strong>for:</strong> /fɔ:/ ➡️ <strong>/fə/</strong> <br><em>(e.g., just for you -> just /fə/ you)</em></li>
+                        <li><strong>of:</strong> /ɒv/ ➡️ <strong>/əv/</strong> or just <strong>/ə/</strong> <br><em>(e.g., cup of tea -> cuppa tea)</em></li>
+                        <li><strong>and:</strong> /ænd/ ➡️ <strong>/ən/</strong> <br><em>(e.g., fish and chips -> fish /ən/ chips)</em></li>
+                    </ul>
+                </div>
+
+                <div class="theory-card">
+                    <h3><i class="fa-solid fa-ghost"></i> Disappearing Consonants</h3>
+                    <p>In auxiliary verbs and pronouns, the starting /h/ or ending consonants often vanish completely.</p>
+                    <ul class="theory-list" style="margin-top: 1rem;">
+                        <li><strong>have:</strong> /hæv/ ➡️ <strong>/əv/</strong> <br><em>(e.g., would have -> would've)</em></li>
+                        <li><strong>he / him:</strong> /hi:/ ➡️ <strong>/i:/</strong>, /hɪm/ ➡️ <strong>/ɪm/</strong> <br><em>(e.g., tell him -> tell 'im)</em></li>
+                        <li><strong>can:</strong> /kæn/ ➡️ <strong>/kən/</strong> <br><em>(e.g., I can do it -> I /kən/ do it)</em></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="theory-card example-card">
+                <h2><i class="fa-solid fa-microphone-lines"></i> 2. Listen to the Difference</h2>
+                <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">Click the speaker to hear how the weak forms sound in natural connected speech.</p>
+                
+                <div class="example-box">
+                    <p class="example-sentence">
+                        <span class="word-stress">FISH</span> 
+                        <span class="word-destress">and</span> 
+                        <span class="word-stress">CHIPS</span>
+                        <button class="btn-play-small" onclick="window.speak('Fish and chips.')" style="margin-left: 10px; transform: translateY(-5px);"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <p class="example-phonetic">Pronounced as: /<strong>Fɪʃ</strong> ən <strong>CHɪPS</strong>/</p>
+                </div>
+                
+                <div class="example-box">
+                    <p class="example-sentence">
+                        <span class="word-destress">a</span> 
+                        <span class="word-stress">CUP</span> 
+                        <span class="word-destress">of</span> 
+                        <span class="word-stress">TEA</span>
+                        <button class="btn-play-small" onclick="window.speak('A cup of tea.')" style="margin-left: 10px; transform: translateY(-5px);"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <p class="example-phonetic">Pronounced as: /ə <strong>KʌP</strong> ə <strong>TI:</strong>/ (cuppa tea)</p>
+                </div>
+
+                <div class="example-box">
+                    <p class="example-sentence">
+                        <span class="word-destress">I</span> 
+                        <span class="word-stress">WOULD</span> 
+                        <span class="word-destress">have</span> 
+                        <span class="word-stress">DONE</span>
+                        <span class="word-destress">it</span> 
+                        <button class="btn-play-small" onclick="window.speak('I would have done it.')" style="margin-left: 10px; transform: translateY(-5px);"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <p class="example-phonetic">Pronounced as: /ai <strong>WƱD</strong> əv <strong>DʌN</strong> ɪt/ (would've)</p>
+                </div>
+
+                <!-- 10 Thêm ví dụ kinh điển -->
+                <div class="example-box">
+                    <p class="example-sentence">
+                        <span class="word-stress">BREAD</span> 
+                        <span class="word-destress">and</span> 
+                        <span class="word-stress">BUTTER</span>
+                        <button class="btn-play-small" onclick="window.speak('Bread and butter.')" style="margin-left: 10px; transform: translateY(-5px);"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <p class="example-phonetic">Pronounced as: /<strong>BRED</strong> ən <strong>BʌTə</strong>/ (bread 'n' butter)</p>
+                </div>
+
+                <div class="example-box">
+                    <p class="example-sentence">
+                        <span class="word-stress">LOOK</span> 
+                        <span class="word-destress">at</span> 
+                        <span class="word-stress">THAT</span>
+                        <button class="btn-play-small" onclick="window.speak('Look at that.')" style="margin-left: 10px; transform: translateY(-5px);"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <p class="example-phonetic">Pronounced as: /<strong>LƱK</strong> ət <strong>ðÆT</strong>/</p>
+                </div>
+
+                <div class="example-box">
+                    <p class="example-sentence">
+                        <span class="word-destress">what</span> 
+                        <span class="word-destress">do</span> 
+                        <span class="word-destress">you</span> 
+                        <span class="word-stress">WANT</span>
+                        <button class="btn-play-small" onclick="window.speak('What do you want?')" style="margin-left: 10px; transform: translateY(-5px);"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <p class="example-phonetic">Pronounced as: /wɒt də jə <strong>WɒNT</strong>/ (whatcha want)</p>
+                </div>
+
+                <div class="example-box">
+                    <p class="example-sentence">
+                        <span class="word-destress">what</span> 
+                        <span class="word-destress">does</span> 
+                        <span class="word-destress">he</span> 
+                        <span class="word-stress">DO</span>
+                        <button class="btn-play-small" onclick="window.speak('What does he do?')" style="margin-left: 10px; transform: translateY(-5px);"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <p class="example-phonetic">Pronounced as: /wɒt dəz i: <strong>DU:</strong>/</p>
+                </div>
+
+                <div class="example-box">
+                    <p class="example-sentence">
+                        <span class="word-destress">I'm</span> 
+                        <span class="word-destress">from</span> 
+                        <span class="word-stress">LONDON</span>
+                        <button class="btn-play-small" onclick="window.speak('I\'m from London.')" style="margin-left: 10px; transform: translateY(-5px);"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <p class="example-phonetic">Pronounced as: /aim frəm <strong>LʌNDəN</strong>/</p>
+                </div>
+
+                <div class="example-box">
+                    <p class="example-sentence">
+                        <span class="word-destress">I</span> 
+                        <span class="word-stress">TOLD</span> 
+                        <span class="word-destress">her</span> 
+                        <button class="btn-play-small" onclick="window.speak('I told her.')" style="margin-left: 10px; transform: translateY(-5px);"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <p class="example-phonetic">Pronounced as: /ai <strong>TOƱLD</strong> ər/ (told 'er)</p>
+                </div>
+
+                <div class="example-box">
+                    <p class="example-sentence">
+                        <span class="word-destress">I</span> 
+                        <span class="word-stress">NEED</span> 
+                        <span class="word-destress">some</span> 
+                        <span class="word-stress">TIME</span>
+                        <button class="btn-play-small" onclick="window.speak('I need some time.')" style="margin-left: 10px; transform: translateY(-5px);"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <p class="example-phonetic">Pronounced as: /ai <strong>NI:D</strong> səm <strong>TAIM</strong>/</p>
+                </div>
+
+                <div class="example-box">
+                    <p class="example-sentence">
+                        <span class="word-stress">BETTER</span> 
+                        <span class="word-destress">than</span> 
+                        <span class="word-stress">EVER</span>
+                        <button class="btn-play-small" onclick="window.speak('Better than ever.')" style="margin-left: 10px; transform: translateY(-5px);"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <p class="example-phonetic">Pronounced as: /<strong>BETə</strong> ðən <strong>EVə</strong>/</p>
+                </div>
+
+                <div class="example-box">
+                    <p class="example-sentence">
+                        <span class="word-stress">GIVE</span> 
+                        <span class="word-destress">it</span> 
+                        <span class="word-destress">to</span> 
+                        <span class="word-destress">them</span>
+                        <button class="btn-play-small" onclick="window.speak('Give it to them.')" style="margin-left: 10px; transform: translateY(-5px);"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <p class="example-phonetic">Pronounced as: /<strong>GɪV</strong> ɪt tə ðəm/ (give it to 'em)</p>
+                </div>
+
+                <div class="example-box">
+                    <p class="example-sentence">
+                        <span class="word-destress">we</span> 
+                        <span class="word-stress">CAN</span> 
+                        <span class="word-stress">GO</span> 
+                        <span class="word-destress">as</span> 
+                        <span class="word-stress">SOON</span> 
+                        <span class="word-destress">as</span> 
+                        <span class="word-stress">POSSIBLE</span>
+                        <button class="btn-play-small" onclick="window.speak('We can go as soon as possible.')" style="margin-left: 10px; transform: translateY(-5px);"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <p class="example-phonetic">Pronounced as: /wi kən <strong>GOU</strong> əz <strong>SU:N</strong> əz <strong>PɒSəBL</strong>/</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sound Detail Modal -->
+    <div class="modal-overlay" id="sound-modal">
+        <div class="modal-content">
+            <button class="close-modal" id="close-modal"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-header">
+                <div class="big-sound" id="modal-sound">/i:/</div>
+                <button class="btn-play-sound" id="modal-play-btn"><i class="fa-solid fa-volume-high"></i></button>
+            </div>
+            <div class="modal-body flashcard-mode">
+                <p class="sound-type" id="modal-type">Long Vowel</p>
+                
+                <div class="flashcard-tabs" id="flashcard-tabs" style="display: none;">
+                    <button class="tab-btn active" data-pos="initial">Đứng Đầu</button>
+                    <button class="tab-btn" data-pos="medial">Đứng Giữa</button>
+                    <button class="tab-btn" data-pos="final">Đứng Cuối</button>
+                </div>
+
+                <div class="flashcard-container">
+                    <div class="flashcard-word" id="flashcard-word">sheep</div>
+                    <div class="flashcard-ipa" id="flashcard-ipa">/ʃi:p/</div>
+                    <div class="flashcard-meaning" id="flashcard-meaning">(n) con cừu</div>
+                    <button class="btn-play-small flashcard-play" id="flashcard-play"><i class="fa-solid fa-volume-low"></i></button>
+                </div>
+                <button class="btn btn-next" id="btn-next-word">
+                    Từ tiếp theo <i class="fa-solid fa-arrow-right"></i>
+                </button>
+                <p class="word-counter" id="word-counter">1/30</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
