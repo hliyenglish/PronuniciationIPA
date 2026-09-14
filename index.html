@@ -11,10 +11,24 @@
 </head>
 <body>
     <nav class="main-nav">
-        <div class="nav-container">
+        <div class="nav-container" style="flex-wrap: wrap;">
             <button class="nav-btn active" data-target="ipa-section"><i class="fa-solid fa-volume-high"></i> Bảng IPA</button>
-            <button class="nav-btn" data-target="theory-section"><i class="fa-solid fa-book-open"></i> Stress & Rhythm</button>
+            <button class="nav-btn" data-target="theory-section"><i class="fa-solid fa-book-open"></i> Stress</button>
             <button class="nav-btn" data-target="weak-forms-section"><i class="fa-solid fa-link-slash"></i> Weak Forms</button>
+            <button class="nav-btn" data-target="s-es-section"><i class="fa-solid fa-spell-check"></i> S/ES Rules</button>
+            <button class="nav-btn" data-target="ed-section"><i class="fa-solid fa-clock-rotate-left"></i> -ED Rules</button>
+            <button class="nav-btn" data-target="cs-linking-section"><i class="fa-solid fa-link"></i> CS: Linking</button>
+            <button class="nav-btn" data-target="cs-insertion-section"><i class="fa-solid fa-plus"></i> CS: Insertion</button>
+            <button class="nav-btn" data-target="cs-deletion-section"><i class="fa-solid fa-scissors"></i> CS: Deletion</button>
+            <button class="nav-btn" data-target="cs-lengthening-section"><i class="fa-solid fa-ruler-horizontal"></i> CS: Lengthening</button>
+            <button class="nav-btn" data-target="cs-assimilation-section"><i class="fa-solid fa-people-arrows"></i> CS: Assimilation</button>
+            <div class="voice-selector" style="margin-left: auto; display: flex; align-items: center; gap: 8px;">
+                <i class="fa-solid fa-headset" style="color: var(--accent-primary);"></i>
+                <select id="global-voice-select" style="padding: 0.4rem; border-radius: 6px; background: rgba(0,0,0,0.3); color: white; border: 1px solid var(--glass-border); font-size: 0.9rem; outline: none; cursor: pointer; max-width: 150px;">
+                    <option value="UK">Giọng Anh (UK)</option>
+                    <option value="US">Giọng Mỹ (US)</option>
+                </select>
+            </div>
         </div>
     </nav>
 
@@ -35,6 +49,10 @@
                         <li data-target="minimal-pairs">
                             <i class="fa-solid fa-ear-listen"></i>
                             <span>Cặp Âm Dễ Nhầm</span>
+                        </li>
+                        <li data-target="minimal-pairs-quiz">
+                            <i class="fa-solid fa-gamepad"></i>
+                            <span>Bài Tập: Nghe & Đoán</span>
                         </li>
                         <li data-target="record-compare">
                             <i class="fa-solid fa-microphone"></i>
@@ -92,15 +110,72 @@
                                         <!-- Rendered by JS -->
                                     </div>
                                 </div>
+
+                                <!-- Tricky Sounds -->
+                                <div class="category-block tricky-block">
+                                    <h2 class="category-title">Nguyên âm (Vowels) + Phụ âm (Consonants)</h2>
+                                    <div class="sound-grid clusters-grid" id="tricky-grid">
+                                        <!-- Rendered by JS -->
+                                    </div>
+                                </div>
+
+                                <!-- Connected Speech Phrases -->
+                                <div class="category-block cs-phrases-block">
+                                    <h2 class="category-title">Cụm nối âm thường gặp (Connected Speech)</h2>
+                                    <div class="sound-grid clusters-grid" id="cs-phrases-grid">
+                                        <!-- Rendered by JS -->
+                                    </div>
+                                </div>
                             </div>
                         </section>
 
                         <!-- Minimal Pairs Section -->
                         <section id="minimal-pairs" class="section">
-                            <div class="feature-coming-soon">
-                                <i class="fa-solid fa-person-digging"></i>
-                                <h2>Tính năng đang phát triển</h2>
-                                <p>Phần luyện tập phân biệt các cặp âm dễ nhầm lẫn sẽ sớm ra mắt.</p>
+                            <div class="category-block">
+                                <h2 class="category-title">Các Cặp Âm Dễ Nhầm Lẫn (Minimal Pairs)</h2>
+                                <p style="color: var(--text-secondary); text-align: center; margin-bottom: 2rem;">Luyện tập nghe và phát âm phân biệt các từ chỉ khác nhau ở một âm duy nhất.</p>
+                                
+                                <div class="mp-chips" id="mp-chips" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 2rem;">
+                                    <!-- Rendered by JS -->
+                                </div>
+
+                                <div id="mp-detail" class="mp-detail-container" style="display: none; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 12px; padding: 2rem;">
+                                    <h3 id="mp-detail-title" style="text-align: center; color: var(--accent-primary); font-size: 1.8rem; margin-bottom: 2rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem;">/ɪ/ vs /i:/</h3>
+                                    <div class="mp-table" id="mp-table-body" style="display: flex; flex-direction: column; gap: 15px;">
+                                        <!-- Rendered by JS -->
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Minimal Pairs Quiz Section -->
+                        <section id="minimal-pairs-quiz" class="section">
+                            <div class="category-block">
+                                <h2 class="category-title">Mini Quiz: Nghe & Đoán (Minimal Pairs)</h2>
+                                <p style="color: var(--text-secondary); text-align: center; margin-bottom: 2rem;">Nhấn nút Play, nghe kỹ và chọn từ bạn vừa nghe thấy. Chú ý các cặp âm dễ nhầm!</p>
+                                
+                                <div class="quiz-container" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 12px; padding: 2rem; max-width: 600px; margin: 0 auto; text-align: center;">
+                                    <div style="margin-bottom: 2rem;">
+                                        <label for="mp-quiz-filter" style="margin-right: 10px; font-size: 1.1rem;">Chọn cặp âm luyện tập:</label>
+                                        <select id="mp-quiz-filter" style="padding: 0.5rem 1rem; border-radius: 8px; background: rgba(0,0,0,0.2); color: white; border: 1px solid var(--glass-border); font-size: 1.1rem; outline: none; cursor: pointer;">
+                                            <option value="all">Tất cả các cặp (Random)</option>
+                                            <!-- Options rendered by JS -->
+                                        </select>
+                                    </div>
+                                    
+                                    <div id="mp-quiz-score" style="font-size: 1.2rem; font-weight: bold; color: var(--accent-primary); margin-bottom: 1.5rem;">Điểm: 0 / 0</div>
+                                    
+                                    <button id="mp-quiz-play-btn" class="btn-play-large" style="background: var(--accent-primary); color: white; border: none; width: 80px; height: 80px; border-radius: 50%; font-size: 2rem; cursor: pointer; margin-bottom: 2.5rem; transition: transform 0.2s; box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);"><i class="fa-solid fa-play"></i></button>
+                                    
+                                    <div id="mp-quiz-options" style="display: flex; gap: 20px; justify-content: center; margin-bottom: 1.5rem;">
+                                        <button class="mp-quiz-option" id="mp-opt-1" style="flex: 1; padding: 1.5rem; font-size: 1.5rem; border: 2px solid var(--glass-border); background: rgba(255,255,255,0.05); color: white; border-radius: 12px; cursor: pointer; transition: all 0.3s;">Option 1</button>
+                                        <button class="mp-quiz-option" id="mp-opt-2" style="flex: 1; padding: 1.5rem; font-size: 1.5rem; border: 2px solid var(--glass-border); background: rgba(255,255,255,0.05); color: white; border-radius: 12px; cursor: pointer; transition: all 0.3s;">Option 2</button>
+                                    </div>
+                                    
+                                    <div id="mp-quiz-feedback" style="font-size: 1.2rem; margin-bottom: 1.5rem; height: 1.5rem; font-weight: bold;"></div>
+                                    
+                                    <button id="mp-quiz-next-btn" style="background: var(--accent-success); color: white; border: none; padding: 0.8rem 2rem; border-radius: 30px; font-size: 1.2rem; cursor: pointer; display: none; margin: 0 auto;">Câu tiếp theo <i class="fa-solid fa-arrow-right"></i></button>
+                                </div>
                             </div>
                         </section>
 
@@ -568,7 +643,546 @@
         </div>
     </div>
 
-    <!-- Sound Detail Modal -->
+    <!-- SECTION 4: S/ES RULES (Hidden by default) -->
+    <div id="s-es-section" class="view-section theory-container" style="display: none;">
+        <header class="theory-header">
+            <h1>S/ES Pronunciation Rules</h1>
+            <p>Master the 3 sounds of suffix -S and -ES: /s/, /z/, and /ɪz/</p>
+        </header>
+
+        <div class="theory-content">
+            <div class="theory-card">
+                <h2><i class="fa-solid fa-lightbulb"></i> The Golden Rule of Voicing</h2>
+                <p>The pronunciation of the -S or -ES suffix depends entirely on the <strong>last sound</strong> of the root word (not the letter).</p>
+                <p>If the root word ends in a <em>Voiceless</em> sound (vocal cords do not vibrate), the suffix will be the voiceless <strong>/s/</strong>. If it ends in a <em>Voiced</em> sound (vocal cords vibrate), the suffix becomes the voiced <strong>/z/</strong>. And if it ends in a "hissing" sound, we add an extra syllable <strong>/ɪz/</strong> to make it pronounceable.</p>
+            </div>
+
+            <div class="theory-grid" style="margin-bottom: 2rem;">
+                <!-- Rule 1 -->
+                <div class="theory-card card-content-words">
+                    <h3><i class="fa-solid fa-1"></i> Pronounced as /s/</h3>
+                    <p class="subtitle">After VOICELESS sounds</p>
+                    <p>If the word ends in: <strong>/p/, /t/, /k/, /f/, /θ/</strong></p>
+                    <ul class="theory-list" style="margin-top: 1rem;">
+                        <li style="display: flex; align-items: center; justify-content: space-between;">
+                            <span>cup ➡️ <strong>cups</strong> /kʌps/</span>
+                            <button class="btn-play-small" onclick="window.speak('cups')"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;">
+                            <span>hat ➡️ <strong>hats</strong> /hæts/</span>
+                            <button class="btn-play-small" onclick="window.speak('hats')"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;">
+                            <span>book ➡️ <strong>books</strong> /bʊks/</span>
+                            <button class="btn-play-small" onclick="window.speak('books')"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;">
+                            <span>laugh ➡️ <strong>laughs</strong> /lɑ:fs/</span>
+                            <button class="btn-play-small" onclick="window.speak('laughs')"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Rule 2 -->
+                <div class="theory-card card-function-words">
+                    <h3><i class="fa-solid fa-2"></i> Pronounced as /z/</h3>
+                    <p class="subtitle">After VOICED sounds & Vowels</p>
+                    <p>If the word ends in: <strong>/b/, /d/, /g/, /v/, /l/, /m/, /n/, /ŋ/, /r/</strong> or any <strong>Vowel</strong></p>
+                    <ul class="theory-list" style="margin-top: 1rem;">
+                        <li style="display: flex; align-items: center; justify-content: space-between;">
+                            <span>crab ➡️ <strong>crabs</strong> /kræbz/</span>
+                            <button class="btn-play-small" onclick="window.speak('crabs')"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;">
+                            <span>bag ➡️ <strong>bags</strong> /bægz/</span>
+                            <button class="btn-play-small" onclick="window.speak('bags')"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;">
+                            <span>dream ➡️ <strong>dreams</strong> /dri:mz/</span>
+                            <button class="btn-play-small" onclick="window.speak('dreams')"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;">
+                            <span>play ➡️ <strong>plays</strong> /pleɪz/</span>
+                            <button class="btn-play-small" onclick="window.speak('plays')"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Rule 3 (Full width) -->
+            <div class="theory-card" style="border-left: 4px solid var(--accent-secondary);">
+                <h3 style="color: var(--accent-secondary); font-size: 1.3rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;"><i class="fa-solid fa-3"></i> Pronounced as /ɪz/ or /əz/</h3>
+                <p class="subtitle">After SIBILANT (hissing) sounds</p>
+                <p>If the word ends in: <strong>/s/, /z/, /ʃ/ (sh), /tʃ/ (ch), /ʒ/, /dʒ/ (j/ge)</strong></p>
+                <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1rem;"><em>Common endings: -s, -ss, -sh, -ch, -x, -z, -ge, -ce</em></p>
+                <div class="theory-grid">
+                    <ul class="theory-list">
+                        <li style="display: flex; align-items: center; justify-content: space-between;">
+                            <span>bus ➡️ <strong>buses</strong> /ˈbʌsɪz/</span>
+                            <button class="btn-play-small" onclick="window.speak('buses')"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;">
+                            <span>wash ➡️ <strong>washes</strong> /ˈwɒʃɪz/</span>
+                            <button class="btn-play-small" onclick="window.speak('washes')"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;">
+                            <span>watch ➡️ <strong>watches</strong> /ˈwɒtʃɪz/</span>
+                            <button class="btn-play-small" onclick="window.speak('watches')"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                    </ul>
+                    <ul class="theory-list">
+                        <li style="display: flex; align-items: center; justify-content: space-between;">
+                            <span>box ➡️ <strong>boxes</strong> /ˈbɒksɪz/</span>
+                            <button class="btn-play-small" onclick="window.speak('boxes')"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;">
+                            <span>change ➡️ <strong>changes</strong> /ˈtʃeɪndʒɪz/</span>
+                            <button class="btn-play-small" onclick="window.speak('changes')"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;">
+                            <span>face ➡️ <strong>faces</strong> /ˈfeɪsɪz/</span>
+                            <button class="btn-play-small" onclick="window.speak('faces')"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mini Quiz for S/ES -->
+            <div class="theory-card quiz-card">
+                <h2><i class="fa-solid fa-list-check"></i> Mini Quiz: /s/, /z/, or /ɪz/?</h2>
+                <p>Listen to the word or look at its ending, then decide how the suffix is pronounced.</p>
+                
+                <!-- Q1 -->
+                <div class="quiz-question" style="margin-top: 1.5rem;">
+                    <p style="font-size: 1.2rem; display: flex; align-items: center; gap: 10px;">
+                        <strong>1. likes</strong> 
+                        <button class="btn-play-small" onclick="window.speak('likes')"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <button class="btn-reveal" onclick="this.nextElementSibling.style.display='block'; this.style.display='none'" style="background: var(--accent-primary); color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600;">Show Answer</button>
+                    <div class="quiz-answer" style="display: none; margin-top: 10px; padding: 15px; background: rgba(16, 185, 129, 0.1); border-left: 4px solid var(--accent-success); border-radius: 0 8px 8px 0;">
+                        <p style="margin-bottom: 0;"><strong>/s/</strong> (ends in voiceless /k/)</p>
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="quiz-question" style="margin-top: 2rem; border-top: 1px solid var(--glass-border); padding-top: 1.5rem;">
+                    <p style="font-size: 1.2rem; display: flex; align-items: center; gap: 10px;">
+                        <strong>2. trees</strong> 
+                        <button class="btn-play-small" onclick="window.speak('trees')"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <button class="btn-reveal" onclick="this.nextElementSibling.style.display='block'; this.style.display='none'" style="background: var(--accent-primary); color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600;">Show Answer</button>
+                    <div class="quiz-answer" style="display: none; margin-top: 10px; padding: 15px; background: rgba(16, 185, 129, 0.1); border-left: 4px solid var(--accent-success); border-radius: 0 8px 8px 0;">
+                        <p style="margin-bottom: 0;"><strong>/z/</strong> (ends in vowel sound /i:/)</p>
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="quiz-question" style="margin-top: 2rem; border-top: 1px solid var(--glass-border); padding-top: 1.5rem;">
+                    <p style="font-size: 1.2rem; display: flex; align-items: center; gap: 10px;">
+                        <strong>3. kisses</strong> 
+                        <button class="btn-play-small" onclick="window.speak('kisses')"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <button class="btn-reveal" onclick="this.nextElementSibling.style.display='block'; this.style.display='none'" style="background: var(--accent-primary); color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600;">Show Answer</button>
+                    <div class="quiz-answer" style="display: none; margin-top: 10px; padding: 15px; background: rgba(16, 185, 129, 0.1); border-left: 4px solid var(--accent-success); border-radius: 0 8px 8px 0;">
+                        <p style="margin-bottom: 0;"><strong>/ɪz/</strong> (ends in sibilant /s/)</p>
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="quiz-question" style="margin-top: 2rem; border-top: 1px solid var(--glass-border); padding-top: 1.5rem;">
+                    <p style="font-size: 1.2rem; display: flex; align-items: center; gap: 10px;">
+                        <strong>4. months</strong> 
+                        <button class="btn-play-small" onclick="window.speak('months')"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <button class="btn-reveal" onclick="this.nextElementSibling.style.display='block'; this.style.display='none'" style="background: var(--accent-primary); color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600;">Show Answer</button>
+                    <div class="quiz-answer" style="display: none; margin-top: 10px; padding: 15px; background: rgba(16, 185, 129, 0.1); border-left: 4px solid var(--accent-success); border-radius: 0 8px 8px 0;">
+                        <p style="margin-bottom: 0;"><strong>/s/</strong> (ends in voiceless /θ/)</p>
+                    </div>
+                </div>
+
+                <!-- Q5 -->
+                <div class="quiz-question" style="margin-top: 2rem; border-top: 1px solid var(--glass-border); padding-top: 1.5rem;">
+                    <p style="font-size: 1.2rem; display: flex; align-items: center; gap: 10px;">
+                        <strong>5. languages</strong> 
+                        <button class="btn-play-small" onclick="window.speak('languages')"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <button class="btn-reveal" onclick="this.nextElementSibling.style.display='block'; this.style.display='none'" style="background: var(--accent-primary); color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600;">Show Answer</button>
+                    <div class="quiz-answer" style="display: none; margin-top: 10px; padding: 15px; background: rgba(16, 185, 129, 0.1); border-left: 4px solid var(--accent-success); border-radius: 0 8px 8px 0;">
+                        <p style="margin-bottom: 0;"><strong>/ɪz/</strong> (ends in sibilant /dʒ/)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- SECTION 5: ED RULES (Hidden by default) -->
+    <div id="ed-section" class="view-section theory-container" style="display: none;">
+        <header class="theory-header">
+            <h1>-ED Pronunciation Rules</h1>
+            <p>Master the 3 sounds of suffix -ED: /ɪd/, /t/, and /d/</p>
+        </header>
+
+        <div class="theory-content">
+            <div class="theory-card">
+                <h2><i class="fa-solid fa-lightbulb"></i> The Golden Rule of -ED</h2>
+                <p>The pronunciation of the -ED suffix depends on the <strong>last sound</strong> of the root verb (not the letter).</p>
+                <p>If the verb ends in <strong>/t/</strong> or <strong>/d/</strong>, we add an extra syllable <strong>/ɪd/</strong>. If it ends in a <em>Voiceless</em> sound, the suffix will be the voiceless <strong>/t/</strong>. If it ends in a <em>Voiced</em> sound, the suffix becomes the voiced <strong>/d/</strong>.</p>
+            </div>
+
+            <div class="theory-grid" style="margin-bottom: 2rem;">
+                <!-- Rule 1: /ɪd/ -->
+                <div class="theory-card card-content-words">
+                    <h3><i class="fa-solid fa-1"></i> Pronounced as /ɪd/</h3>
+                    <p class="subtitle">After /t/ and /d/</p>
+                    <p>Adds an extra syllable to the word.</p>
+                    <ul class="theory-list" style="margin-top: 1rem;">
+                        <li style="display: flex; align-items: center; justify-content: space-between;">
+                            <span>want ➡️ <strong>wanted</strong> /ˈwɒntɪd/</span>
+                            <button class="btn-play-small" onclick="window.speak('wanted')"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;">
+                            <span>need ➡️ <strong>needed</strong> /ˈniːdɪd/</span>
+                            <button class="btn-play-small" onclick="window.speak('needed')"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;">
+                            <span>decide ➡️ <strong>decided</strong> /dɪˈsaɪdɪd/</span>
+                            <button class="btn-play-small" onclick="window.speak('decided')"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;">
+                            <span>start ➡️ <strong>started</strong> /ˈstɑːtɪd/</span>
+                            <button class="btn-play-small" onclick="window.speak('started')"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;">
+                            <span>end ➡️ <strong>ended</strong> /ˈendɪd/</span>
+                            <button class="btn-play-small" onclick="window.speak('ended')"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Rule 2: /t/ -->
+                <div class="theory-card card-content-words">
+                    <h3><i class="fa-solid fa-2"></i> Pronounced as /t/</h3>
+                    <p class="subtitle">After VOICELESS sounds</p>
+                    <p>If the word ends in: <strong>/p/, /k/, /f/, /s/, /ʃ/, /tʃ/, /θ/</strong></p>
+                    <ul class="theory-list" style="margin-top: 1rem;">
+                        <li style="display: flex; align-items: center; justify-content: space-between;">
+                            <span>help ➡️ <strong>helped</strong> /helpt/</span>
+                            <button class="btn-play-small" onclick="window.speak('helped')"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;">
+                            <span>look ➡️ <strong>looked</strong> /lʊkt/</span>
+                            <button class="btn-play-small" onclick="window.speak('looked')"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;">
+                            <span>wash ➡️ <strong>washed</strong> /wɒʃt/</span>
+                            <button class="btn-play-small" onclick="window.speak('washed')"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;">
+                            <span>watch ➡️ <strong>watched</strong> /wɒtʃt/</span>
+                            <button class="btn-play-small" onclick="window.speak('watched')"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;">
+                            <span>laugh ➡️ <strong>laughed</strong> /lɑːft/</span>
+                            <button class="btn-play-small" onclick="window.speak('laughed')"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Rule 3: /d/ -->
+                <div class="theory-card card-content-words">
+                    <h3><i class="fa-solid fa-3"></i> Pronounced as /d/</h3>
+                    <p class="subtitle">After VOICED sounds & Vowels</p>
+                    <p>If the word ends in any vowel or voiced consonant</p>
+                    <ul class="theory-list" style="margin-top: 1rem;">
+                        <li style="display: flex; align-items: center; justify-content: space-between;">
+                            <span>play ➡️ <strong>played</strong> /pleɪd/</span>
+                            <button class="btn-play-small" onclick="window.speak('played')"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;">
+                            <span>call ➡️ <strong>called</strong> /kɔːld/</span>
+                            <button class="btn-play-small" onclick="window.speak('called')"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;">
+                            <span>love ➡️ <strong>loved</strong> /lʌvd/</span>
+                            <button class="btn-play-small" onclick="window.speak('loved')"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;">
+                            <span>use ➡️ <strong>used</strong> /juːzd/</span>
+                            <button class="btn-play-small" onclick="window.speak('used')"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;">
+                            <span>clean ➡️ <strong>cleaned</strong> /kliːnd/</span>
+                            <button class="btn-play-small" onclick="window.speak('cleaned')"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mini Quiz for ED -->
+            <div class="theory-card quiz-card">
+                <h2><i class="fa-solid fa-list-check"></i> Mini Quiz: /ɪd/, /t/, or /d/?</h2>
+                <p>Listen to the word or look at its ending, then decide how the suffix is pronounced.</p>
+                
+                <!-- Q1 -->
+                <div class="quiz-question" style="margin-top: 1.5rem;">
+                    <p style="font-size: 1.2rem; display: flex; align-items: center; gap: 10px;">
+                        <strong>1. worked</strong> 
+                        <button class="btn-play-small" onclick="window.speak('worked')"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <button class="btn-reveal" onclick="this.nextElementSibling.style.display='block'; this.style.display='none'" style="background: var(--accent-primary); color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600;">Show Answer</button>
+                    <div class="quiz-answer" style="display: none; margin-top: 10px; padding: 15px; background: rgba(16, 185, 129, 0.1); border-left: 4px solid var(--accent-success); border-radius: 0 8px 8px 0;">
+                        <p style="margin-bottom: 0;"><strong>/t/</strong> (ends in voiceless /k/)</p>
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="quiz-question" style="margin-top: 2rem; border-top: 1px solid var(--glass-border); padding-top: 1.5rem;">
+                    <p style="font-size: 1.2rem; display: flex; align-items: center; gap: 10px;">
+                        <strong>2. waited</strong> 
+                        <button class="btn-play-small" onclick="window.speak('waited')"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <button class="btn-reveal" onclick="this.nextElementSibling.style.display='block'; this.style.display='none'" style="background: var(--accent-primary); color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600;">Show Answer</button>
+                    <div class="quiz-answer" style="display: none; margin-top: 10px; padding: 15px; background: rgba(16, 185, 129, 0.1); border-left: 4px solid var(--accent-success); border-radius: 0 8px 8px 0;">
+                        <p style="margin-bottom: 0;"><strong>/ɪd/</strong> (ends in /t/)</p>
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="quiz-question" style="margin-top: 2rem; border-top: 1px solid var(--glass-border); padding-top: 1.5rem;">
+                    <p style="font-size: 1.2rem; display: flex; align-items: center; gap: 10px;">
+                        <strong>3. enjoyed</strong> 
+                        <button class="btn-play-small" onclick="window.speak('enjoyed')"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <button class="btn-reveal" onclick="this.nextElementSibling.style.display='block'; this.style.display='none'" style="background: var(--accent-primary); color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600;">Show Answer</button>
+                    <div class="quiz-answer" style="display: none; margin-top: 10px; padding: 15px; background: rgba(16, 185, 129, 0.1); border-left: 4px solid var(--accent-success); border-radius: 0 8px 8px 0;">
+                        <p style="margin-bottom: 0;"><strong>/d/</strong> (ends in vowel sound /ɔɪ/)</p>
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="quiz-question" style="margin-top: 2rem; border-top: 1px solid var(--glass-border); padding-top: 1.5rem;">
+                    <p style="font-size: 1.2rem; display: flex; align-items: center; gap: 10px;">
+                        <strong>4. missed</strong> 
+                        <button class="btn-play-small" onclick="window.speak('missed')"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <button class="btn-reveal" onclick="this.nextElementSibling.style.display='block'; this.style.display='none'" style="background: var(--accent-primary); color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600;">Show Answer</button>
+                    <div class="quiz-answer" style="display: none; margin-top: 10px; padding: 15px; background: rgba(16, 185, 129, 0.1); border-left: 4px solid var(--accent-success); border-radius: 0 8px 8px 0;">
+                        <p style="margin-bottom: 0;"><strong>/t/</strong> (ends in voiceless /s/)</p>
+                    </div>
+                </div>
+
+                <!-- Q5 -->
+                <div class="quiz-question" style="margin-top: 2rem; border-top: 1px solid var(--glass-border); padding-top: 1.5rem;">
+                    <p style="font-size: 1.2rem; display: flex; align-items: center; gap: 10px;">
+                        <strong>5. hugged</strong> 
+                        <button class="btn-play-small" onclick="window.speak('hugged')"><i class="fa-solid fa-volume-high"></i></button>
+                    </p>
+                    <button class="btn-reveal" onclick="this.nextElementSibling.style.display='block'; this.style.display='none'" style="background: var(--accent-primary); color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600;">Show Answer</button>
+                    <div class="quiz-answer" style="display: none; margin-top: 10px; padding: 15px; background: rgba(16, 185, 129, 0.1); border-left: 4px solid var(--accent-success); border-radius: 0 8px 8px 0;">
+                        <p style="margin-bottom: 0;"><strong>/d/</strong> (ends in voiced /g/)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CS 1: LINKING -->
+    <div id="cs-linking-section" class="view-section theory-container" style="display: none;">
+        <header class="theory-header">
+            <h1>Connected Speech: Linking</h1>
+            <p>Consonant ➡️ Vowel Connection</p>
+        </header>
+        <div class="theory-content">
+            <div class="theory-card">
+                <h2><i class="fa-solid fa-link"></i> Consonant to Vowel Linking</h2>
+                <p>When a word ends with a consonant sound and the next word starts with a vowel sound, they link together. It sounds like the consonant is at the beginning of the second word.</p>
+                <div class="theory-grid" style="margin-top: 1.5rem;">
+                    <ul class="theory-list">
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>an apple ➡️ <strong>a napple</strong></span><button class="btn-play-small" onclick="window.speak('an apple')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>hold on ➡️ <strong>hol don</strong></span><button class="btn-play-small" onclick="window.speak('hold on')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>take it ➡️ <strong>ta kit</strong></span><button class="btn-play-small" onclick="window.speak('take it')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>turn off ➡️ <strong>tur noff</strong></span><button class="btn-play-small" onclick="window.speak('turn off')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>look at it ➡️ <strong>loo ka tit</strong></span><button class="btn-play-small" onclick="window.speak('look at it')"><i class="fa-solid fa-volume-high"></i></button></li>
+                    </ul>
+                    <ul class="theory-list">
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>far away ➡️ <strong>fa raway</strong></span><button class="btn-play-small" onclick="window.speak('far away')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>four hours ➡️ <strong>fou rours</strong></span><button class="btn-play-small" onclick="window.speak('four hours')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>stop it ➡️ <strong>sto pit</strong></span><button class="btn-play-small" onclick="window.speak('stop it')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>first of all ➡️ <strong>firs to vall</strong></span><button class="btn-play-small" onclick="window.speak('first of all')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>come in ➡️ <strong>co min</strong></span><button class="btn-play-small" onclick="window.speak('come in')"><i class="fa-solid fa-volume-high"></i></button></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="theory-card quiz-card">
+                <h2>Mini Quiz</h2>
+                <div class="quiz-question" style="margin-top: 1rem;"><p><strong>1. "grab it"</strong> ➡️ gra bit <button class="btn-play-small" onclick="window.speak('grab it')"><i class="fa-solid fa-volume-high"></i></button></p></div>
+                <div class="quiz-question" style="margin-top: 1rem;"><p><strong>2. "make up"</strong> ➡️ ma kup <button class="btn-play-small" onclick="window.speak('make up')"><i class="fa-solid fa-volume-high"></i></button></p></div>
+                <div class="quiz-question" style="margin-top: 1rem;"><p><strong>3. "this afternoon"</strong> ➡️ thi safternoon <button class="btn-play-small" onclick="window.speak('this afternoon')"><i class="fa-solid fa-volume-high"></i></button></p></div>
+                <div class="quiz-question" style="margin-top: 1rem;"><p><strong>4. "fade away"</strong> ➡️ fa daway <button class="btn-play-small" onclick="window.speak('fade away')"><i class="fa-solid fa-volume-high"></i></button></p></div>
+                <div class="quiz-question" style="margin-top: 1rem;"><p><strong>5. "feel it"</strong> ➡️ fee lit <button class="btn-play-small" onclick="window.speak('feel it')"><i class="fa-solid fa-volume-high"></i></button></p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CS 2: INSERTION -->
+    <div id="cs-insertion-section" class="view-section theory-container" style="display: none;">
+        <header class="theory-header">
+            <h1>Connected Speech: Insertion</h1>
+            <p>Vowel ➡️ Vowel (Adding /w/ or /j/)</p>
+        </header>
+        <div class="theory-content">
+            <div class="theory-card">
+                <h2><i class="fa-solid fa-plus"></i> Intrusive /w/ and /j/</h2>
+                <p>When two vowels meet, English speakers insert a small sound to bridge the gap smoothly.</p>
+                <p>- If the first word ends in round lips (/u/, /oʊ/), insert <strong>/w/</strong>.</p>
+                <p>- If the first word ends in wide lips (/i/, /eɪ/), insert <strong>/j/ (y)</strong>.</p>
+                <div class="theory-grid" style="margin-top: 1.5rem;">
+                    <ul class="theory-list">
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>go out ➡️ <strong>go /w/ out</strong></span><button class="btn-play-small" onclick="window.speak('go out')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>do it ➡️ <strong>do /w/ it</strong></span><button class="btn-play-small" onclick="window.speak('do it')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>you are ➡️ <strong>you /w/ are</strong></span><button class="btn-play-small" onclick="window.speak('you are')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>who is ➡️ <strong>who /w/ is</strong></span><button class="btn-play-small" onclick="window.speak('who is')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>two apples ➡️ <strong>two /w/ apples</strong></span><button class="btn-play-small" onclick="window.speak('two apples')"><i class="fa-solid fa-volume-high"></i></button></li>
+                    </ul>
+                    <ul class="theory-list">
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>see it ➡️ <strong>see /j/ it</strong></span><button class="btn-play-small" onclick="window.speak('see it')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>play it ➡️ <strong>play /j/ it</strong></span><button class="btn-play-small" onclick="window.speak('play it')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>we are ➡️ <strong>we /j/ are</strong></span><button class="btn-play-small" onclick="window.speak('we are')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>I am ➡️ <strong>I /j/ am</strong></span><button class="btn-play-small" onclick="window.speak('I am')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>she is ➡️ <strong>she /j/ is</strong></span><button class="btn-play-small" onclick="window.speak('she is')"><i class="fa-solid fa-volume-high"></i></button></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="theory-card quiz-card">
+                <h2>Mini Quiz: Insert /w/ or /j/?</h2>
+                <div class="quiz-question" style="margin-top: 1rem;"><p><strong>1. "so honest"</strong> ➡️ so /w/ honest <button class="btn-play-small" onclick="window.speak('so honest')"><i class="fa-solid fa-volume-high"></i></button></p></div>
+                <div class="quiz-question" style="margin-top: 1rem;"><p><strong>2. "my aunt"</strong> ➡️ my /j/ aunt <button class="btn-play-small" onclick="window.speak('my aunt')"><i class="fa-solid fa-volume-high"></i></button></p></div>
+                <div class="quiz-question" style="margin-top: 1rem;"><p><strong>3. "say it"</strong> ➡️ say /j/ it <button class="btn-play-small" onclick="window.speak('say it')"><i class="fa-solid fa-volume-high"></i></button></p></div>
+                <div class="quiz-question" style="margin-top: 1rem;"><p><strong>4. "blue eyes"</strong> ➡️ blue /w/ eyes <button class="btn-play-small" onclick="window.speak('blue eyes')"><i class="fa-solid fa-volume-high"></i></button></p></div>
+                <div class="quiz-question" style="margin-top: 1rem;"><p><strong>5. "the end"</strong> ➡️ the /j/ end <button class="btn-play-small" onclick="window.speak('the end')"><i class="fa-solid fa-volume-high"></i></button></p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CS 3: DELETION -->
+    <div id="cs-deletion-section" class="view-section theory-container" style="display: none;">
+        <header class="theory-header">
+            <h1>Connected Speech: Deletion</h1>
+            <p>Dropping Consonants & The "Flap T"</p>
+        </header>
+        <div class="theory-content">
+            <div class="theory-grid" style="margin-bottom: 2rem;">
+                <div class="theory-card" style="border-left: 4px solid #ef4444; background: rgba(239, 68, 68, 0.03);">
+                    <h3 style="color: #ef4444;"><i class="fa-solid fa-scissors"></i> Rule 1: Consonant Clusters</h3>
+                    <p>When 3 consonants meet, the middle one (usually /t/ or /d/) gets deleted.</p>
+                    <ul class="theory-list" style="margin-top: 1rem;">
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>next door ➡️ <strong>nex door</strong></span><button class="btn-play-small" onclick="window.speak('next door')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>left behind ➡️ <strong>lef behind</strong></span><button class="btn-play-small" onclick="window.speak('left behind')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>must be ➡️ <strong>mus be</strong></span><button class="btn-play-small" onclick="window.speak('must be')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>send them ➡️ <strong>sen them</strong></span><button class="btn-play-small" onclick="window.speak('send them')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>first class ➡️ <strong>firs class</strong></span><button class="btn-play-small" onclick="window.speak('first class')"><i class="fa-solid fa-volume-high"></i></button></li>
+                    </ul>
+                </div>
+                <div class="theory-card" style="border-left: 4px solid #ef4444; background: rgba(239, 68, 68, 0.03);">
+                    <h3 style="color: #ef4444;"><i class="fa-solid fa-times"></i> Rule 2: Deleted T (American)</h3>
+                    <p>When /t/ follows an /n/ and precedes an unstressed syllable, Americans drop the /t/ completely.</p>
+                    <ul class="theory-list" style="margin-top: 1rem;">
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>twenty ➡️ <strong>twenny</strong></span><button class="btn-play-small" onclick="window.speak('twenty')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>internet ➡️ <strong>innernet</strong></span><button class="btn-play-small" onclick="window.speak('internet')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>international ➡️ <strong>innernational</strong></span><button class="btn-play-small" onclick="window.speak('international')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>mountain ➡️ <strong>moun'n</strong></span><button class="btn-play-small" onclick="window.speak('mountain')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>center ➡️ <strong>cenner</strong></span><button class="btn-play-small" onclick="window.speak('center')"><i class="fa-solid fa-volume-high"></i></button></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="theory-card quiz-card">
+                <h2>Mini Quiz: What is dropped?</h2>
+                <div class="quiz-question" style="margin-top: 1rem;"><p><strong>1. "interview"</strong> ➡️ innerview (drop t) <button class="btn-play-small" onclick="window.speak('interview')"><i class="fa-solid fa-volume-high"></i></button></p></div>
+                <div class="quiz-question" style="margin-top: 1rem;"><p><strong>2. "most common"</strong> ➡️ mos common (drop t) <button class="btn-play-small" onclick="window.speak('most common')"><i class="fa-solid fa-volume-high"></i></button></p></div>
+                <div class="quiz-question" style="margin-top: 1rem;"><p><strong>3. "old man"</strong> ➡️ ol man (drop d) <button class="btn-play-small" onclick="window.speak('old man')"><i class="fa-solid fa-volume-high"></i></button></p></div>
+                <div class="quiz-question" style="margin-top: 1rem;"><p><strong>4. "advantage"</strong> ➡️ advannage (drop t) <button class="btn-play-small" onclick="window.speak('advantage')"><i class="fa-solid fa-volume-high"></i></button></p></div>
+                <div class="quiz-question" style="margin-top: 1rem;"><p><strong>5. "handbag"</strong> ➡️ hanbag (drop d) <button class="btn-play-small" onclick="window.speak('handbag')"><i class="fa-solid fa-volume-high"></i></button></p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CS 4: LENGTHENING -->
+    <div id="cs-lengthening-section" class="view-section theory-container" style="display: none;">
+        <header class="theory-header">
+            <h1>Connected Speech: Lengthening</h1>
+            <p>Same Consonant ➡️ Same Consonant (Gemination)</p>
+        </header>
+        <div class="theory-content">
+            <div class="theory-card">
+                <h2><i class="fa-solid fa-ruler-horizontal"></i> Merging Identical Consonants</h2>
+                <p>Don't stop and start again. Just hold the consonant longer!</p>
+                <div class="theory-grid" style="margin-top: 1.5rem;">
+                    <ul class="theory-list">
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>bad dog ➡️ <strong>ba-ddog</strong></span><button class="btn-play-small" onclick="window.speak('bad dog')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>some milk ➡️ <strong>so-mmilk</strong></span><button class="btn-play-small" onclick="window.speak('some milk')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>gas station ➡️ <strong>ga-sstation</strong></span><button class="btn-play-small" onclick="window.speak('gas station')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>black cat ➡️ <strong>bla-ccat</strong></span><button class="btn-play-small" onclick="window.speak('black cat')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>feel less ➡️ <strong>fee-lless</strong></span><button class="btn-play-small" onclick="window.speak('feel less')"><i class="fa-solid fa-volume-high"></i></button></li>
+                    </ul>
+                    <ul class="theory-list">
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>big game ➡️ <strong>bi-ggame</strong></span><button class="btn-play-small" onclick="window.speak('big game')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>hot tea ➡️ <strong>ho-ttea</strong></span><button class="btn-play-small" onclick="window.speak('hot tea')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>grab boys ➡️ <strong>gra-bboys</strong></span><button class="btn-play-small" onclick="window.speak('grab boys')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>ten names ➡️ <strong>te-nnames</strong></span><button class="btn-play-small" onclick="window.speak('ten names')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>nice smile ➡️ <strong>ni-ssmile</strong></span><button class="btn-play-small" onclick="window.speak('nice smile')"><i class="fa-solid fa-volume-high"></i></button></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="theory-card quiz-card">
+                <h2>Mini Quiz: Hold it!</h2>
+                <div class="quiz-question" style="margin-top: 1rem;"><p><strong>1. "keep playing"</strong> ➡️ kee-pplaying <button class="btn-play-small" onclick="window.speak('keep playing')"><i class="fa-solid fa-volume-high"></i></button></p></div>
+                <div class="quiz-question" style="margin-top: 1rem;"><p><strong>2. "social life"</strong> ➡️ socia-llife <button class="btn-play-small" onclick="window.speak('social life')"><i class="fa-solid fa-volume-high"></i></button></p></div>
+                <div class="quiz-question" style="margin-top: 1rem;"><p><strong>3. "good dog"</strong> ➡️ goo-ddog <button class="btn-play-small" onclick="window.speak('good dog')"><i class="fa-solid fa-volume-high"></i></button></p></div>
+                <div class="quiz-question" style="margin-top: 1rem;"><p><strong>4. "enough food"</strong> ➡️ enou-ffood <button class="btn-play-small" onclick="window.speak('enough food')"><i class="fa-solid fa-volume-high"></i></button></p></div>
+                <div class="quiz-question" style="margin-top: 1rem;"><p><strong>5. "stop pushing"</strong> ➡️ sto-ppushing <button class="btn-play-small" onclick="window.speak('stop pushing')"><i class="fa-solid fa-volume-high"></i></button></p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CS 5: ASSIMILATION -->
+    <div id="cs-assimilation-section" class="view-section theory-container" style="display: none;">
+        <header class="theory-header">
+            <h1>Connected Speech: Assimilation</h1>
+            <p>Sounds morphing into NEW sounds</p>
+        </header>
+        <div class="theory-content">
+            <div class="theory-card">
+                <h2><i class="fa-solid fa-people-arrows"></i> The "You" Combinations & Nasals</h2>
+                <p>Certain sounds blend with /j/ (y) to create entirely new sounds.</p>
+                <div class="theory-grid" style="margin-top: 1.5rem;">
+                    <ul class="theory-list">
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>don't you ➡️ <strong>don't-chu</strong> (/t/+/j/=/tʃ/)</span><button class="btn-play-small" onclick="window.speak('don't you')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>won't you ➡️ <strong>won't-chu</strong></span><button class="btn-play-small" onclick="window.speak('won't you')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>did you ➡️ <strong>di-dja</strong> (/d/+/j/=/dʒ/)</span><button class="btn-play-small" onclick="window.speak('did you')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>could you ➡️ <strong>coul-dja</strong></span><button class="btn-play-small" onclick="window.speak('could you')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>would you ➡️ <strong>woul-dja</strong></span><button class="btn-play-small" onclick="window.speak('would you')"><i class="fa-solid fa-volume-high"></i></button></li>
+                    </ul>
+                    <ul class="theory-list">
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>bless you ➡️ <strong>ble-shu</strong> (/s/+/j/=/ʃ/)</span><button class="btn-play-small" onclick="window.speak('bless you')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>miss you ➡️ <strong>mi-shu</strong></span><button class="btn-play-small" onclick="window.speak('miss you')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>ten bikes ➡️ <strong>tem bikes</strong> (/n/ ➡️ /m/)</span><button class="btn-play-small" onclick="window.speak('ten bikes')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>in bed ➡️ <strong>im bed</strong> (/n/ ➡️ /m/)</span><button class="btn-play-small" onclick="window.speak('in bed')"><i class="fa-solid fa-volume-high"></i></button></li>
+                        <li style="display: flex; align-items: center; justify-content: space-between;"><span>good boy ➡️ <strong>goob boy</strong> (/d/ ➡️ /b/)</span><button class="btn-play-small" onclick="window.speak('good boy')"><i class="fa-solid fa-volume-high"></i></button></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="theory-card quiz-card">
+                <h2>Mini Quiz: Morph it!</h2>
+                <div class="quiz-question" style="margin-top: 1rem;"><p><strong>1. "meet you"</strong> ➡️ mee-chu <button class="btn-play-small" onclick="window.speak('meet you')"><i class="fa-solid fa-volume-high"></i></button></p></div>
+                <div class="quiz-question" style="margin-top: 1rem;"><p><strong>2. "should you"</strong> ➡️ shoul-dja <button class="btn-play-small" onclick="window.speak('should you')"><i class="fa-solid fa-volume-high"></i></button></p></div>
+                <div class="quiz-question" style="margin-top: 1rem;"><p><strong>3. "pass your"</strong> ➡️ pa-shour <button class="btn-play-small" onclick="window.speak('pass your')"><i class="fa-solid fa-volume-high"></i></button></p></div>
+                <div class="quiz-question" style="margin-top: 1rem;"><p><strong>4. "iron man"</strong> ➡️ irom man <button class="btn-play-small" onclick="window.speak('iron man')"><i class="fa-solid fa-volume-high"></i></button></p></div>
+                <div class="quiz-question" style="margin-top: 1rem;"><p><strong>5. "bad boy"</strong> ➡️ bab boy <button class="btn-play-small" onclick="window.speak('bad boy')"><i class="fa-solid fa-volume-high"></i></button></p></div>
+            </div>
+        </div>
+    </div>
+<!-- Sound Detail Modal -->
     <div class="modal-overlay" id="sound-modal">
         <div class="modal-content">
             <button class="close-modal" id="close-modal"><i class="fa-solid fa-xmark"></i></button>

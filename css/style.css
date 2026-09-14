@@ -923,3 +923,77 @@ audio {
     color: var(--text-secondary);
     font-style: italic;
 }
+
+/* Minimal Pairs Styles */
+.mp-chip {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+.mp-chip:hover {
+    background: var(--accent-primary);
+    color: white;
+}
+.mp-chip.active {
+    background: var(--accent-primary);
+    color: white;
+    box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);
+}
+.mp-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    padding: 1rem 2rem;
+    transition: all 0.3s ease;
+}
+.mp-row:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+.mp-word {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    flex: 1;
+}
+.mp-word strong {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+}
+.mp-word span {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+.mp-word small {
+    font-size: 1rem;
+    color: #a0aec0;
+}
+.mp-vs {
+    font-weight: bold;
+    color: var(--accent-danger);
+    font-size: 1.2rem;
+    padding: 0 2rem;
+}
+
+/* Minimal Pairs Quiz Styles */
+.mp-quiz-option:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    transform: translateY(-2px);
+}
+.mp-quiz-option.correct {
+    background: var(--accent-success) !important;
+    border-color: var(--accent-success) !important;
+    transform: scale(1.05);
+}
+.mp-quiz-option.incorrect {
+    background: #ef4444 !important;
+    border-color: #ef4444 !important;
+}

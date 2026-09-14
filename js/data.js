@@ -237,6 +237,197 @@ const ipaData = {
             examplesInitial: [],
             examplesMedial: ["simple|/ˈsɪmpəl/|(adj)|đơn giản", "important|/ɪmˈpɔ:tənt/|(adj)|quan trọng", "example|/ɪgˈzɑ:mpəl/|(n)|ví dụ", "completely|/kəmˈpli:tli/|(adv)|hoàn toàn", "company|/ˈkʌmpəni/|(n)|công ty", "computer|/kəmˈpju:tər/|(n)|máy tính", "empty|/ˈempti/|(adj)|trống rỗng", "temperature|/ˈtemprətʃər/|(n)|nhiệt độ", "sympathetic|/ˌsɪmpəˈθetɪk/|(adj)|thông cảm", "champion|/ˈtʃæmpiən/|(n)|nhà vô địch", "complain|/kəmˈpleɪn/|(v)|phàn nàn", "compare|/kəmˈpeə/|(v)|so sánh", "campaign|/kæmˈpeɪn/|(n)|chiến dịch", "campus|/ˈkæmpəs/|(n)|khuôn viên", "bumper|/ˈbʌmpər/|(n)|cản xe"],
             examplesFinal: ["jump|/dʒʌmp/|(v)|nhảy", "camp|/kæmp/|(n)|cắm trại", "lamp|/læmp/|(n)|cái đèn", "bump|/bʌmp/|(v)|va chạm", "pump|/pʌmp/|(n)|cái bơm", "dump|/dʌmp/|(v)|vứt bỏ", "lump|/lʌmp/|(n)|cục, tảng", "stamp|/stæmp/|(n)|con tem", "chimp|/tʃɪmp/|(n)|tinh tinh", "shrimp|/ʃrɪmp/|(n)|con tôm", "cramp|/kræmp/|(n)|chuột rút", "swamp|/swɒmp/|(n)|đầm lầy", "plump|/plʌmp/|(adj)|bụ bẫm", "stump|/stʌmp/|(n)|gốc cây", "ramp|/ræmp/|(n)|đoạn dốc"]
+        },
+        { id: "stch", phonetic: "stʃ", type: "Consonant Cluster", voiced: false, 
+            examplesInitial: [],
+            examplesMedial: ["question|/ˈkwestʃən/|(n)|câu hỏi", "suggestion|/səˈdʒestʃən/|(n)|gợi ý", "digestion|/daɪˈdʒestʃən/|(n)|sự tiêu hóa", "exhaustion|/ɪgˈzɔːstʃən/|(n)|sự kiệt sức", "posture|/ˈpɒstʃər/|(n)|tư thế", "moisture|/ˈmɔɪstʃər/|(n)|độ ẩm", "gesture|/ˈdʒestʃər/|(n)|cử chỉ", "pasture|/ˈpɑːstʃər/|(n)|đồng cỏ", "christian|/ˈkrɪstʃən/|(n)|người cơ đốc", "congestion|/kənˈdʒestʃən/|(n)|sự tắc nghẽn"],
+            examplesFinal: []
+        },
+        { id: "pr", phonetic: "pr", type: "Consonant Cluster", voiced: false, 
+            examplesInitial: ["price|/praɪs/|(n)|giá cả", "practice|/ˈpræktɪs/|(v)|thực hành", "proud|/praʊd/|(adj)|tự hào", "promise|/ˈprɒmɪs/|(v)|hứa", "problem|/ˈprɒbləm/|(n)|vấn đề", "project|/ˈprɒdʒekt/|(n)|dự án", "prepare|/prɪˈpeə/|(v)|chuẩn bị", "present|/ˈprezənt/|(n)|hiện tại", "protect|/prəˈtekt/|(v)|bảo vệ", "process|/ˈprəʊses/|(n)|quá trình"],
+            examplesMedial: ["improve|/ɪmˈpruːv/|(v)|cải thiện", "approach|/əˈprəʊtʃ/|(v)|tiếp cận", "apron|/ˈeɪprən/|(n)|tạp dề", "express|/ɪkˈspres/|(v)|bày tỏ", "appreciate|/əˈpriːʃieɪt/|(v)|trân trọng", "impress|/ɪmˈpres/|(v)|gây ấn tượng", "appropriate|/əˈprəʊpriət/|(adj)|thích hợp", "depress|/dɪˈpres/|(v)|làm chán nản", "compress|/kəmˈpres/|(v)|nén", "suppress|/səˈpres/|(v)|đàn áp"],
+            examplesFinal: []
+        },
+        { id: "ts", phonetic: "ts", type: "Consonant Cluster", voiced: false, 
+            examplesInitial: [],
+            examplesMedial: [],
+            examplesFinal: ["cats|/kæts/|(n)|những con mèo", "hats|/hæts/|(n)|những cái mũ", "pets|/pets/|(n)|thú cưng", "boats|/bəʊts/|(n)|những chiếc thuyền", "students|/ˈstuːdənts/|(n)|học sinh", "writes|/raɪts/|(v)|viết (số ít)", "waits|/weɪts/|(v)|chờ đợi (số ít)"]
+        },
+        { id: "dz", phonetic: "dz", type: "Consonant Cluster", voiced: true, 
+            examplesInitial: [],
+            examplesMedial: [],
+            examplesFinal: ["kids|/kɪdz/|(n)|trẻ em", "beds|/bedz/|(n)|những cái giường", "birds|/bɜːdz/|(n)|những con chim", "friends|/frendz/|(n)|bạn bè", "words|/wɜːdz/|(n)|từ vựng", "reads|/riːdz/|(v)|đọc (số ít)", "needs|/niːdz/|(v)|cần (số ít)"]
+        },
+        { id: "nz", phonetic: "nz", type: "Consonant Cluster", voiced: true, 
+            examplesInitial: [],
+            examplesMedial: [],
+            examplesFinal: ["pens|/penz/|(n)|những cái bút", "fans|/fænz/|(n)|những cái quạt", "phones|/fəʊnz/|(n)|điện thoại", "plans|/plænz/|(n)|kế hoạch", "lines|/laɪnz/|(n)|đường kẻ", "means|/miːnz/|(v/n)|có nghĩa là", "runs|/rʌnz/|(v)|chạy (số ít)"]
+        },
+        { id: "mz", phonetic: "mz", type: "Consonant Cluster", voiced: true, 
+            examplesInitial: [],
+            examplesMedial: [],
+            examplesFinal: ["times|/taɪmz/|(n)|những lần/thời gian", "games|/geɪmz/|(n)|những trò chơi", "names|/neɪmz/|(n)|tên gọi", "rooms|/ruːmz/|(n)|những căn phòng", "dreams|/driːmz/|(n)|những giấc mơ", "comes|/kʌmz/|(v)|đến (số ít)", "seems|/siːmz/|(v)|có vẻ như (số ít)"]
+        },
+        { id: "ps", phonetic: "ps", type: "Consonant Cluster", voiced: false, 
+            examplesInitial: [],
+            examplesMedial: [],
+            examplesFinal: ["cups|/kʌps/|(n)|những cái cốc", "maps|/mæps/|(n)|những tấm bản đồ", "stops|/stɒps/|(v)|dừng lại (số ít)", "sleeps|/sliːps/|(v)|ngủ (số ít)", "hopes|/həʊps/|(n/v)|hy vọng", "helps|/helps/|(v)|giúp đỡ (số ít)", "steps|/steps/|(n)|những bước đi"]
+        },
+        { id: "bz", phonetic: "bz", type: "Consonant Cluster", voiced: true, 
+            examplesInitial: [],
+            examplesMedial: [],
+            examplesFinal: ["jobs|/dʒɒbz/|(n)|công việc", "clubs|/klʌbz/|(n)|câu lạc bộ", "webs|/webz/|(n)|mạng nhện", "tubes|/tjuːbz/|(n)|ống", "robes|/rəʊbz/|(n)|áo choàng", "rubs|/rʌbz/|(v)|chà xát (số ít)", "describes|/dɪˈskraɪbz/|(v)|miêu tả (số ít)"]
+        }
+    ],
+    tricky: [
+        { id: "oun", phonetic: "əʊn", type: "Tricky Sound", voiced: true, 
+            examplesInitial: ["own|/əʊn/|(v)|sở hữu (thường đọc sai thành ôn)", "owner|/ˈəʊnər/|(n)|chủ nhân", "only|/ˈəʊnli/|(adv)|chỉ (thường đọc sai thành on-ly)", "ownership|/ˈəʊnəʃɪp/|(n)|quyền sở hữu", "owning|/ˈəʊnɪŋ/|(v)|đang sở hữu"],
+            examplesMedial: ["known|/nəʊn/|(v)|được biết đến", "phone|/fəʊn/|(n)|điện thoại (thường đọc sai thành phôn)", "bone|/bəʊn/|(n)|xương", "stone|/stəʊn/|(n)|hòn đá", "lonely|/ˈləʊnli/|(adj)|cô đơn"],
+            examplesFinal: ["zone|/zəʊn/|(n)|khu vực", "alone|/əˈləʊn/|(adj)|một mình", "tone|/təʊn/|(n)|giọng, giai điệu", "don't|/dəʊnt/|(v)|đừng", "won't|/wəʊnt/|(v)|sẽ không"]
+        },
+        { id: "eim", phonetic: "eɪm", type: "Tricky Sound", voiced: true, 
+            examplesInitial: ["aim|/eɪm/|(n)|mục tiêu", "aiming|/ˈeɪmɪŋ/|(v)|đang nhắm", "aimless|/ˈeɪmləs/|(adj)|vô mục đích", "aimed|/eɪmd/|(v)|đã nhắm", "amiable|/ˈeɪmiəbəl/|(adj)|thân thiện"],
+            examplesMedial: ["name|/neɪm/|(n)|tên (hay đọc sai thành nêm)", "game|/geɪm/|(n)|trò chơi (hay đọc sai thành gêm)", "same|/seɪm/|(adj)|giống nhau", "came|/keɪm/|(v)|đã đến", "famous|/ˈfeɪməs/|(adj)|nổi tiếng"],
+            examplesFinal: ["blame|/bleɪm/|(v)|đổ lỗi", "claim|/kleɪm/|(v)|tuyên bố", "flame|/fleɪm/|(n)|ngọn lửa", "frame|/freɪm/|(n)|khung", "shame|/ʃeɪm/|(n)|sự xấu hổ"]
+        },
+        { id: "ein", phonetic: "eɪn", type: "Tricky Sound", voiced: true, 
+            examplesInitial: ["angel|/ˈeɪndʒəl/|(n)|thiên thần", "ancient|/ˈeɪnʃənt/|(adj)|cổ đại"],
+            examplesMedial: ["change|/tʃeɪndʒ/|(v)|thay đổi (hay đọc sai thành chen)", "danger|/ˈdeɪndʒər/|(n)|nguy hiểm", "strange|/streɪndʒ/|(adj)|kỳ lạ", "maintain|/meɪnˈteɪn/|(v)|duy trì", "container|/kənˈteɪnər/|(n)|đồ chứa"],
+            examplesFinal: ["rain|/reɪn/|(n)|mưa", "train|/treɪn/|(n)|xe lửa", "main|/meɪn/|(adj)|chính", "pain|/peɪn/|(n)|nỗi đau", "brain|/breɪn/|(n)|não"]
+        },
+        { id: "ol", phonetic: "ɔːl", type: "Tricky Sound", voiced: true, 
+            examplesInitial: ["all|/ɔːl/|(pro)|tất cả", "always|/ˈɔːlweɪz/|(adv)|luôn luôn", "also|/ˈɔːlsəʊ/|(adv)|cũng", "although|/ɔːlˈðəʊ/|(conj)|mặc dù", "alright|/ɔːlˈraɪt/|(adj)|ổn"],
+            examplesMedial: ["caller|/ˈkɔːlər/|(n)|người gọi", "taller|/ˈtɔːlər/|(adj)|cao hơn", "smaller|/ˈsmɔːlər/|(adj)|nhỏ hơn", "falling|/ˈfɔːlɪŋ/|(v)|đang rơi", "baseball|/ˈbeɪsbɔːl/|(n)|bóng chày"],
+            examplesFinal: ["call|/kɔːl/|(v)|gọi (thường đọc sai thành côn)", "tall|/tɔːl/|(adj)|cao", "small|/smɔːl/|(adj)|nhỏ", "fall|/fɔːl/|(v)|rơi", "wall|/wɔːl/|(n)|bức tường"]
+        }
+    ],
+    connectedSpeech: [
+        { id: "cs_ch", phonetic: "tʃ + V", type: "Connected Speech", voiced: false, 
+            examplesInitial: [],
+            examplesMedial: ["such as|/sʌtʃ əz/ ➡️ /sʌ-tʃəz/|(phr)|như là", "which is|/wɪtʃ ɪz/ ➡️ /wɪ-tʃɪz/|(phr)|cái mà", "catch it|/kætʃ ɪt/ ➡️ /kæ-tʃɪt/|(phr)|bắt lấy nó", "touch it|/tʌtʃ ɪt/ ➡️ /tʌ-tʃɪt/|(phr)|chạm vào nó", "watch out|/wɒtʃ aʊt/ ➡️ /wɒ-tʃaʊt/|(phr)|cẩn thận", "teach us|/tiːtʃ əs/ ➡️ /tiː-tʃəs/|(phr)|dạy chúng tôi", "much of|/mʌtʃ əv/ ➡️ /mʌ-tʃəv/|(phr)|nhiều của"],
+            examplesFinal: []
+        },
+        { id: "cs_j", phonetic: "dʒ + V", type: "Connected Speech", voiced: true, 
+            examplesInitial: [],
+            examplesMedial: ["age of|/eɪdʒ əv/ ➡️ /eɪ-dʒəv/|(phr)|tuổi của", "large amount|/lɑːdʒ əˈmaʊnt/ ➡️ /lɑː-dʒəˈmaʊnt/|(phr)|số lượng lớn", "change it|/tʃeɪndʒ ɪt/ ➡️ /tʃeɪn-dʒɪt/|(phr)|thay đổi nó", "bridge is|/brɪdʒ ɪz/ ➡️ /brɪ-dʒɪz/|(phr)|cây cầu thì", "language is|/ˈlæŋgwɪdʒ ɪz/ ➡️ /ˈlæŋgwɪ-dʒɪz/|(phr)|ngôn ngữ thì"],
+            examplesFinal: []
+        },
+        { id: "cs_s", phonetic: "s + V", type: "Connected Speech", voiced: false, 
+            examplesInitial: [],
+            examplesMedial: ["this is|/ðɪs ɪz/ ➡️ /ðɪ-sɪz/|(phr)|đây là", "nice eyes|/naɪs aɪz/ ➡️ /naɪ-saɪz/|(phr)|đôi mắt đẹp", "pass out|/pɑːs aʊt/ ➡️ /pɑː-saʊt/|(phr)|ngất xỉu", "cross it|/krɒs ɪt/ ➡️ /krɒ-sɪt/|(phr)|vượt qua nó", "miss it|/mɪs ɪt/ ➡️ /mɪ-sɪt/|(phr)|bỏ lỡ nó"],
+            examplesFinal: []
+        }
+    ],
+    minimalPairs: [
+        {
+            id: "i_ii",
+            title: "/ɪ/ vs /i:/",
+            pairs: [
+                ["ship", "/ʃɪp/", "tàu thủy", "sheep", "/ʃi:p/", "con cừu"],
+                ["sit", "/sɪt/", "ngồi", "seat", "/si:t/", "chỗ ngồi"],
+                ["hit", "/hɪt/", "đánh", "heat", "/hi:t/", "nhiệt"],
+                ["slip", "/slɪp/", "trượt", "sleep", "/sli:p/", "ngủ"],
+                ["bin", "/bɪn/", "thùng rác", "bean", "/bi:n/", "hạt đậu"]
+            ]
+        },
+        {
+            id: "e_ei",
+            title: "/e/ vs /eɪ/",
+            pairs: [
+                ["pen", "/pen/", "cái bút", "pain", "/peɪn/", "nỗi đau"],
+                ["let", "/let/", "để cho", "late", "/leɪt/", "muộn"],
+                ["sell", "/sel/", "bán", "sail", "/seɪl/", "cánh buồm"],
+                ["west", "/west/", "hướng tây", "waste", "/weɪst/", "lãng phí"],
+                ["test", "/test/", "bài kiểm tra", "taste", "/teɪst/", "nếm"]
+            ]
+        },
+        {
+            id: "ae_e",
+            title: "/æ/ vs /e/",
+            pairs: [
+                ["bad", "/bæd/", "xấu, tồi", "bed", "/bed/", "cái giường"],
+                ["pan", "/pæn/", "cái chảo", "pen", "/pen/", "cái bút"],
+                ["sad", "/sæd/", "buồn", "said", "/sed/", "đã nói"],
+                ["land", "/lænd/", "đất đai", "lend", "/lend/", "cho mượn"],
+                ["man", "/mæn/", "đàn ông", "men", "/men/", "đàn ông"]
+            ]
+        },
+        {
+            id: "b_p",
+            title: "/b/ vs /p/",
+            pairs: [
+                ["bear", "/beə/", "con gấu", "pear", "/peə/", "quả lê"],
+                ["bull", "/bʊl/", "bò đực", "pull", "/pʊl/", "kéo"],
+                ["big", "/bɪg/", "lớn", "pig", "/pɪg/", "con lợn"],
+                ["back", "/bæk/", "cái lưng", "pack", "/pæk/", "đóng gói"],
+                ["buy", "/baɪ/", "mua", "pie", "/paɪ/", "bánh nướng"]
+            ]
+        },
+        {
+            id: "ch_j",
+            title: "/tʃ/ vs /dʒ/",
+            pairs: [
+                ["cheap", "/tʃi:p/", "rẻ", "jeep", "/dʒi:p/", "xe jeep"],
+                ["choke", "/tʃəʊk/", "nghẹt thở", "joke", "/dʒəʊk/", "trò đùa"],
+                ["rich", "/rɪtʃ/", "giàu có", "ridge", "/rɪdʒ/", "sườn núi"],
+                ["catch", "/kætʃ/", "bắt lấy", "badge", "/bædʒ/", "huy hiệu"],
+                ["chain", "/tʃeɪn/", "sợi xích", "Jane", "/dʒeɪn/", "tên Jane"]
+            ]
+        },
+        {
+            id: "d_th",
+            title: "/d/ vs /ð/",
+            pairs: [
+                ["day", "/deɪ/", "ngày", "they", "/ðeɪ/", "họ"],
+                ["dare", "/deə/", "dám", "there", "/ðeə/", "ở đó"],
+                ["do", "/du:/", "làm", "though", "/ðəʊ/", "mặc dù"],
+                ["den", "/den/", "hang thú", "then", "/ðen/", "sau đó"],
+                ["dough", "/dəʊ/", "bột nhào", "though", "/ðəʊ/", "mặc dù"]
+            ]
+        },
+        {
+            id: "k_g",
+            title: "/k/ vs /g/",
+            pairs: [
+                ["class", "/klɑ:s/", "lớp học", "glass", "/glɑ:s/", "cái ly"],
+                ["cold", "/kəʊld/", "lạnh", "gold", "/gəʊld/", "vàng"],
+                ["curl", "/kɜ:l/", "uốn xoăn", "girl", "/gɜ:l/", "cô gái"],
+                ["cave", "/keɪv/", "hang động", "gave", "/geɪv/", "đã cho"],
+                ["back", "/bæk/", "cái lưng", "bag", "/bæg/", "cái túi"]
+            ]
+        },
+        {
+            id: "t_d",
+            title: "/t/ vs /d/",
+            pairs: [
+                ["two", "/tu:/", "số hai", "do", "/du:/", "làm"],
+                ["tie", "/taɪ/", "cà vạt", "die", "/daɪ/", "chết"],
+                ["town", "/taʊn/", "thị trấn", "down", "/daʊn/", "xuống"],
+                ["write", "/raɪt/", "viết", "ride", "/raɪd/", "cưỡi"],
+                ["bat", "/bæt/", "con dơi", "bad", "/bæd/", "xấu"]
+            ]
+        },
+        {
+            id: "s_z",
+            title: "/s/ vs /z/",
+            pairs: [
+                ["sink", "/sɪŋk/", "chìm", "zinc", "/zɪŋk/", "kẽm"],
+                ["sip", "/sɪp/", "nhấp ngụm", "zip", "/zɪp/", "khóa kéo"],
+                ["bus", "/bʌs/", "xe buýt", "buzz", "/bʌz/", "tiếng ong"],
+                ["price", "/praɪs/", "giá cả", "prize", "/praɪz/", "giải thưởng"],
+                ["ice", "/aɪs/", "đá lạnh", "eyes", "/aɪz/", "đôi mắt"]
+            ]
+        },
+        {
+            id: "u_uu",
+            title: "/ʊ/ vs /u:/",
+            pairs: [
+                ["full", "/fʊl/", "đầy", "fool", "/fu:l/", "kẻ ngốc"],
+                ["pull", "/pʊl/", "kéo", "pool", "/pu:l/", "hồ bơi"],
+                ["look", "/lʊk/", "nhìn", "luke", "/lu:k/", "tên Luke"],
+                ["soot", "/sʊt/", "bồ hóng", "suit", "/su:t/", "bộ vest"],
+                ["wood", "/wʊd/", "gỗ", "wooed", "/wu:d/", "đã tán tỉnh"]
+            ]
         }
     ]
 };

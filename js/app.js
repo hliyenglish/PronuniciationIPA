@@ -90,6 +90,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Render Tricky
+    const trickyGrid = document.getElementById('tricky-grid');
+    if (ipaData.tricky && trickyGrid) {
+        ipaData.tricky.forEach(sound => {
+            trickyGrid.appendChild(createSoundCard(sound, 'cluster'));
+        });
+    }
+
+    // Render Connected Speech Phrases
+    const csPhrasesGrid = document.getElementById('cs-phrases-grid');
+    if (ipaData.connectedSpeech && csPhrasesGrid) {
+        ipaData.connectedSpeech.forEach(sound => {
+            csPhrasesGrid.appendChild(createSoundCard(sound, 'consonant'));
+        });
+    }
+
     // === Modal Logic ===
     const modal = document.getElementById('sound-modal');
     const closeModalBtn = document.getElementById('close-modal');
@@ -188,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateFlashcard() {
         if(currentShuffledExamples.length === 0) {
-            flashcardWord.textContent = '(Không có từ ví dụ)';
+            flashcardWord.textContent = '(KhÃƒÆ’Ã‚Â´ng cÃƒÆ’Ã‚Â³ tÃƒÂ¡Ã‚Â»Ã‚Â« vÃƒÆ’Ã‚Â­ dÃƒÂ¡Ã‚Â»Ã‚Â¥)';
             flashcardIpa.textContent = '';
             flashcardMeaning.textContent = '';
             wordCounter.textContent = '0/0';
@@ -213,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         wordCounter.textContent = `${currentWordIndex + 1}/${currentShuffledExamples.length}`;
         
-        // Tự động phát âm khi chuyển từ
+        // TÃƒÂ¡Ã‚Â»Ã‚Â± Ãƒâ€žÃ¢â‚¬ËœÃƒÂ¡Ã‚Â»Ã¢â€žÂ¢ng phÃƒÆ’Ã‚Â¡t ÃƒÆ’Ã‚Â¢m khi chuyÃƒÂ¡Ã‚Â»Ã†â€™n tÃƒÂ¡Ã‚Â»Ã‚Â«
         speak(word);
     }
 
@@ -221,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(currentShuffledExamples.length === 0) return;
         currentWordIndex = (currentWordIndex + 1) % currentShuffledExamples.length;
         
-        // Hiệu ứng chuyển từ
+        // HiÃƒÂ¡Ã‚Â»Ã¢â‚¬Â¡u ÃƒÂ¡Ã‚Â»Ã‚Â©ng chuyÃƒÂ¡Ã‚Â»Ã†â€™n tÃƒÂ¡Ã‚Â»Ã‚Â«
         const container = document.querySelector('.flashcard-container');
         container.style.opacity = '0.5';
         setTimeout(() => {
@@ -256,11 +272,64 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // === Text to Speech using Web Speech API ===
+    const PREFERRED_US_VOICES = [
+        "Microsoft Aria Online (Natural) - English (United States)",
+        "Google US English",
+        "en-US"
+    ];
+    const PREFERRED_UK_VOICES = [
+        "Microsoft Sonia Online (Natural) - English (United Kingdom)",
+        "Google UK English Female",
+        "Google UK English Male",
+        "en-GB"
+    ];
+
+    let availableVoices = [];
+    
+    function loadVoices() {
+        if ('speechSynthesis' in window) {
+            availableVoices = window.speechSynthesis.getVoices();
+        }
+    }
+    
+    if ('speechSynthesis' in window) {
+        loadVoices();
+        if (speechSynthesis.onvoiceschanged !== undefined) {
+            speechSynthesis.onvoiceschanged = loadVoices;
+        }
+    }
+
     window.speak = function(text) {
         if ('speechSynthesis' in window) {
             const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = 'en-GB'; // British English for Pronunciation in Use
-            utterance.rate = 0.8; // Slightly slower for clear pronunciation
+            
+            const voiceSelect = document.getElementById('global-voice-select');
+            const targetAccent = voiceSelect ? voiceSelect.value : 'UK';
+            
+            utterance.lang = targetAccent === 'UK' ? 'en-GB' : 'en-US';
+            utterance.rate = 0.8;
+            
+            let targetVoice = null;
+            const preferredList = targetAccent === 'UK' ? PREFERRED_UK_VOICES : PREFERRED_US_VOICES;
+            
+            if (availableVoices.length > 0) {
+                // First attempt: Match by exact preferred name
+                for (let pref of preferredList) {
+                    targetVoice = availableVoices.find(v => v.name.includes(pref));
+                    if (targetVoice) break;
+                }
+                
+                // Second attempt: Match by language prefix
+                if (!targetVoice) {
+                    const langPrefix = targetAccent === 'UK' ? 'en-GB' : 'en-US';
+                    targetVoice = availableVoices.find(v => v.lang.startsWith(langPrefix));
+                }
+                
+                if (targetVoice) {
+                    utterance.voice = targetVoice;
+                }
+            }
+            
             speechSynthesis.speak(utterance);
         } else {
             console.error('Speech Synthesis not supported in this browser.');
@@ -308,7 +377,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(err => {
                 console.error('Error accessing microphone:', err);
                 btnRecord.disabled = true;
-                btnRecord.innerHTML = '<i class="fa-solid fa-microphone-slash"></i> Không có mic';
+                btnRecord.innerHTML = '<i class="fa-solid fa-microphone-slash"></i> KhÃƒÆ’Ã‚Â´ng cÃƒÆ’Ã‚Â³ mic';
             });
     }
 
@@ -319,15 +388,182 @@ document.addEventListener('DOMContentLoaded', () => {
             // Stop recording
             mediaRecorder.stop();
             btnRecord.classList.remove('recording');
-            btnRecord.innerHTML = '<i class="fa-solid fa-microphone"></i> <span>Bắt đầu ghi âm</span>';
+            btnRecord.innerHTML = '<i class="fa-solid fa-microphone"></i> <span>BÃƒÂ¡Ã‚ÂºÃ‚Â¯t Ãƒâ€žÃ¢â‚¬ËœÃƒÂ¡Ã‚ÂºÃ‚Â§u ghi ÃƒÆ’Ã‚Â¢m</span>';
             isRecording = false;
         } else {
             // Start recording
             mediaRecorder.start();
             btnRecord.classList.add('recording');
-            btnRecord.innerHTML = '<i class="fa-solid fa-stop"></i> <span>Dừng ghi âm</span>';
+            btnRecord.innerHTML = '<i class="fa-solid fa-stop"></i> <span>DÃƒÂ¡Ã‚Â»Ã‚Â«ng ghi ÃƒÆ’Ã‚Â¢m</span>';
             isRecording = true;
             playbackArea.style.display = 'none';
         }
     });
+
+    // === Minimal Pairs Logic ===
+    const mpChipsContainer = document.getElementById('mp-chips');
+    const mpDetailContainer = document.getElementById('mp-detail');
+    const mpDetailTitle = document.getElementById('mp-detail-title');
+    const mpTableBody = document.getElementById('mp-table-body');
+
+    if (ipaData.minimalPairs && mpChipsContainer) {
+        ipaData.minimalPairs.forEach((group, index) => {
+            const btn = document.createElement('button');
+            btn.className = 'mp-chip';
+            btn.textContent = group.title;
+            btn.addEventListener('click', () => {
+                // Set active style
+                document.querySelectorAll('.mp-chip').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Show container
+                mpDetailContainer.style.display = 'block';
+                mpDetailTitle.textContent = group.title;
+                
+                // Render table
+                mpTableBody.innerHTML = '';
+                group.pairs.forEach(pair => {
+                    const row = document.createElement('div');
+                    row.className = 'mp-row';
+                    row.innerHTML = `
+                        <div class="mp-word">
+                            <strong>${pair[0]}</strong>
+                            <span>${pair[1]}</span>
+                            <small>${pair[2]}</small>
+                            <button class="btn-play-small" onclick="window.speak('${pair[0]}')" style="margin-top:10px;"><i class="fa-solid fa-volume-high"></i></button>
+                        </div>
+                        <div class="mp-vs">VS</div>
+                        <div class="mp-word">
+                            <strong>${pair[3]}</strong>
+                            <span>${pair[4]}</span>
+                            <small>${pair[5]}</small>
+                            <button class="btn-play-small" onclick="window.speak('${pair[3]}')" style="margin-top:10px;"><i class="fa-solid fa-volume-high"></i></button>
+                        </div>
+                    `;
+                    mpTableBody.appendChild(row);
+                });
+            });
+            mpChipsContainer.appendChild(btn);
+        });
+    }
+
+        // === Minimal Pairs Quiz Logic ===
+    const mpQuizPlayBtn = document.getElementById('mp-quiz-play-btn');
+    const mpOpt1 = document.getElementById('mp-opt-1');
+    const mpOpt2 = document.getElementById('mp-opt-2');
+    const mpQuizFeedback = document.getElementById('mp-quiz-feedback');
+    const mpQuizNextBtn = document.getElementById('mp-quiz-next-btn');
+    const mpQuizScore = document.getElementById('mp-quiz-score');
+    const mpQuizFilter = document.getElementById('mp-quiz-filter');
+
+    if (mpQuizPlayBtn) {
+        let currentQuizPair = null;
+        let correctAnswerIndex = 0; // 1 or 2
+        let score = 0;
+        let totalQuestions = 0;
+        let hasAnswered = false;
+        
+        // Track unused questions to avoid repetition
+        let unusedPairs = [];
+
+        // Render filter options
+        if (ipaData.minimalPairs && mpQuizFilter) {
+            ipaData.minimalPairs.forEach((group, index) => {
+                const opt = document.createElement('option');
+                opt.value = index;
+                opt.textContent = group.title;
+                mpQuizFilter.appendChild(opt);
+            });
+            
+            // Handle filter change
+            mpQuizFilter.addEventListener('change', () => {
+                score = 0;
+                totalQuestions = 0;
+                mpQuizScore.textContent = 'Điểm: 0 / 0';
+                unusedPairs = []; // Reset unused pool
+                loadNewQuizQuestion();
+            });
+        }
+
+        function loadNewQuizQuestion() {
+            hasAnswered = false;
+            mpOpt1.className = 'mp-quiz-option';
+            mpOpt2.className = 'mp-quiz-option';
+            mpQuizFeedback.textContent = '';
+            mpQuizFeedback.style.color = 'inherit';
+            mpQuizNextBtn.style.display = 'none';
+
+            const groups = ipaData.minimalPairs;
+            if (!groups || groups.length === 0) return;
+
+            // If pool is empty, refill it
+            if (unusedPairs.length === 0) {
+                let pool = [];
+                if (mpQuizFilter.value === 'all') {
+                    // Refill with all pairs across all groups
+                    groups.forEach(g => {
+                        g.pairs.forEach(p => pool.push(p));
+                    });
+                } else {
+                    // Refill with pairs from the selected group
+                    const selectedGroup = groups[parseInt(mpQuizFilter.value)];
+                    pool = [...selectedGroup.pairs];
+                }
+                // Shuffle the pool
+                pool.sort(() => Math.random() - 0.5);
+                unusedPairs = pool;
+            }
+            
+            // Pop the next question from the unused pool
+            const randomPair = unusedPairs.pop();
+            currentQuizPair = randomPair; 
+
+            const correctIsFirst = Math.random() < 0.5;
+            const option1IsFirst = Math.random() < 0.5;
+            
+            if (option1IsFirst) {
+                mpOpt1.textContent = randomPair[0];
+                mpOpt2.textContent = randomPair[3];
+                correctAnswerIndex = correctIsFirst ? 1 : 2;
+            } else {
+                mpOpt1.textContent = randomPair[3];
+                mpOpt2.textContent = randomPair[0];
+                correctAnswerIndex = correctIsFirst ? 2 : 1;
+            }
+
+            const wordToPlay = correctIsFirst ? randomPair[0] : randomPair[3];
+            mpQuizPlayBtn.onclick = () => window.speak(wordToPlay);
+        }
+
+        function handleOptionClick(selectedIdx, btn) {
+            if (hasAnswered) return;
+            hasAnswered = true;
+            totalQuestions++;
+            
+            if (selectedIdx === correctAnswerIndex) {
+                btn.classList.add('correct');
+                mpQuizFeedback.textContent = '🎉 Chính xác!';
+                mpQuizFeedback.style.color = 'var(--accent-success)';
+                score++;
+            } else {
+                btn.classList.add('incorrect');
+                mpQuizFeedback.textContent = '❌ Sai rồi! Nghe lại nhé.';
+                mpQuizFeedback.style.color = '#ef4444';
+                if (correctAnswerIndex === 1) mpOpt1.classList.add('correct');
+                else mpOpt2.classList.add('correct');
+            }
+            
+            mpQuizScore.textContent = 'Điểm: ' + score + ' / ' + totalQuestions;
+            mpQuizNextBtn.style.display = 'block';
+        }
+
+        mpOpt1.addEventListener('click', () => handleOptionClick(1, mpOpt1));
+        mpOpt2.addEventListener('click', () => handleOptionClick(2, mpOpt2));
+        mpQuizNextBtn.addEventListener('click', loadNewQuizQuestion);
+
+        if (ipaData.minimalPairs) {
+            loadNewQuizQuestion();
+        }
+    }
 });
+
